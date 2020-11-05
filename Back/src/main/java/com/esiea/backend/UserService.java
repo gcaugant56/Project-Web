@@ -11,12 +11,23 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getUser(){
+    public List<User> getUser()
+    {
         return userRepository.findAll();
     }
 
-    public User getUserByName(String name)
+    public User getUserByUsername(String username)
     {
-        return userRepository.findByName(name);
+        return userRepository.getUserByUsername(username);
+    }
+
+    public boolean createUser(String username, String password, String name)
+    {
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        newUser.setName(name);
+        userRepository.save(newUser);
+        return true;
     }
 }
