@@ -32,7 +32,7 @@ public class HomeController {
         return userService.getUserByUsername(username);
     }
 
-    @PostMapping("/user/{username}{password}{name}") //user/root?username=toto?password=root?name=Guillaume
+    @PostMapping("/user/{username}{password}{name}") //user/root?username=toto&password=root&name=Guillaume
     @ResponseBody
     public boolean createUser(@RequestParam String username, String password, String name)
     {

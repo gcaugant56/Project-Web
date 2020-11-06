@@ -1,10 +1,10 @@
 import axios from 'axios'
 <template>
-    <div id="app">
+  <div id="app">
     <div class="container">
       <div class="row">
-        <p class="jumbotron">Se connecter sur : <input type="text" id="usernamefield"></p>
-        <button v-on:click="getUser">Envoyer</button>
+        <p class="jumbotron">Se connecter sur : <input type="text" id="usernamefield" name="usernamefield"></p>
+        <button v-on:click="getUser()">Envoyer</button>
         <p class="jumbotron">Vous êtes connecté en tant que : </p>
 
         <p>name : {{name}}</p>
@@ -34,7 +34,8 @@ export default {
 },
   methods:{
     getUser: function () {
-        fetch("http://localhost:8085/user/root?username=armel")
+        var nameUser = document.getElementById("usernamefield").value;
+        fetch("http://localhost:8085/user/root?username="+ nameUser)
         .then( response => {
             response.json().then(data => {
                 console.log(data.username);
@@ -42,6 +43,7 @@ export default {
                 this.password = data.password;
                 this.id = data.id;
                 this.name = data.name;
+                console.log(nameUser)
             })
         }
       );
