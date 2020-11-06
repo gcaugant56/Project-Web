@@ -19,7 +19,7 @@ import axios from 'axios'
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'getUser',
   props: {
     msg: String
   },
