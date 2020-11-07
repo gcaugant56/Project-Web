@@ -15,8 +15,8 @@ public class MyUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        com.esiea.backend.User user = userRepository.getUserByUsername(userName);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        com.esiea.backend.User user = userRepository.getUserByUsername(username);
         return new User(user.getUsername(),user.getPassword(), new ArrayList<>());
     }
 
