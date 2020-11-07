@@ -66,11 +66,11 @@ public class HomeController {
         return userService.getUserByUsername(username);
     }
 
-    @PostMapping("/user/{username}{password}{name}")
+    @PostMapping("/registration")
     @ResponseBody
-    public boolean createUser(@RequestParam String username, String password, String name)
+    public boolean createUser(@RequestBody User user)
     {
-        return userService.createUser(username,password,name);
+        return userService.createUser(user.getUsername(),user.getPassword(),user.getName());
     }
 
 }
