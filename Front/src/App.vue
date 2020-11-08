@@ -1,6 +1,6 @@
 <template>
-  <get-user id="getUser"/>
-  <post-user id="postUser"/>
+      <get-user id="getUser"/>
+      <post-user id="postUser"/>
 </template>
 
 <script>
