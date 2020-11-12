@@ -33,23 +33,25 @@
         </div>
       </nav>
       <router-view></router-view>
-    </div>
-
-    <div id="inscriton">
-      <form id="formulaire">
-        <label for="username">UserName : </label>
-        <input type="text" id="username">
+    
+      <script type="text/x-template" id="login">
+      <div id="inscriton">
+        <form id="formulaire">
+          <label for="username">UserName : </label>
+          <input type="text" id="username">
+        </br>
+          <label for="pseudo">Pseudo : </label>
+          <input type="text" id="Pseudo">
       </br>
-
-        <label for="pseudo">Pseudo : </label>
-        <input type="text" id="Pseudo">
-      </br>
-        <label for="password">Password</label>
-        <input type="text" id="password">
-      </br>
-        <button type="submit">Envoyer</button>
-      </form>
-
+          <label for="password">Password</label>
+          <input type="text" id="password">
+    </br>
+          <div v-for="product in products">
+            <h1>{{product.text}}</h1>
+          </div>
+        </form>
+      </div>
+    </script>
     </div>
 
 
