@@ -1,9 +1,9 @@
 const Home = {
-    template: '<h1>HOME</h1>',
+    template: "<h1>HOME</h1>",
     name: 'Home'
 };
 const Login = {
-    template: '<h1>inscrire</h1>',
+    template: "<h1>Formulaire d'inscription</h1>",
     name: "Login"
 };
 const Connect = {
@@ -29,3 +29,5 @@ const router = new VueRouter({
 const vue = new Vue({
     router
 }).$mount("#app");
+
+
