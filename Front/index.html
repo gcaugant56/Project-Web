@@ -55,6 +55,7 @@
     </script>
 
 
+
   <script type="text/x-template" id="login">
         <div id="connexion">
           <h1>Se connecter</h1>
@@ -71,6 +72,15 @@
         </div>
       </script>
 
+      <script type="text/x-template" id="home">
+        <div id="homepage">
+          <h1>Home Page</h1>
+          <div v-if="token != ''">
+            <h1>Bonjour {{token}}</h1>
+          </div>
+          <div v-else>Veuillez vous connecter svp</div>
+        </div>
+      </script>
 
 
 

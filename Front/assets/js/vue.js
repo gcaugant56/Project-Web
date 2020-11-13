@@ -12,7 +12,7 @@ const store = new Vuex.Store({
     mutations: {
         getCookie() {
             cookie = JSON.parse($cookies.get('token'));
-            console.log("getcookie() | valeur token | " + cookie);
+            console.log("store | getcookie() | valeur token | " + cookie);
             store.token = cookie;
             return cookie;
         }
@@ -20,8 +20,18 @@ const store = new Vuex.Store({
 })
 
 const Home = {
-    template: "<h1>HOME</h1>",
-    name: 'Home'
+    template: "#home",
+    name: 'Home',
+    data:() => {
+        return {
+            token: "",
+        }
+    },
+    mounted() {
+        store.commit('getCookie');
+        console.log("home | fin mounted | valeur token store | " + store.token);
+        this.token = store.token;
+    }
 };
 const Signup = {
     template: '#signup',
@@ -81,9 +91,6 @@ const Login = {
                 if(response.status == 200){
                     $cookies.set('token', JSON.stringify(data.token));
                     this.$router.push({ path: '/'});
-                    store.commit('getCookie');
-                    console.log("valeur du cookie : " + store.token);
-                    console.log("fin fonction");
                 }else{
                 }
                 })})
