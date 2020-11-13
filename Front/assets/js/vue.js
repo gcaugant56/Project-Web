@@ -21,6 +21,10 @@ const Home = {
     data:() => {
         return {
             token: '',
+            id: '',
+            username: '',
+            pseudo: '',
+            mail: ''
         }
     },
     methods: {
@@ -28,6 +32,7 @@ const Home = {
             if (store.token == "" || store.token == "null"){
                 console.log("aucun token");
             }else{
+                console.log('Bearer ' + store.token);
                 fetch("http://localhost:8085/user", {
                 method: 'GET',
                 headers: {
@@ -36,6 +41,10 @@ const Home = {
             .then( response => {
                 response.json().then(data => {
                 console.log(data);
+                this.id = data.id;
+                this.username = data.username;
+                this.pseudo = data.name;
+                this.mail = data.email;
                 })})
             }
         }
