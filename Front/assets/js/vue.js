@@ -11,9 +11,9 @@ const Home = {
     template: "<h1>HOME</h1>",
     name: 'Home'
 };
-const Login = {
-    template: '#login',
-    name: "Login",
+const Signup = {
+    template: '#signup',
+    name: "Signup",
         data: ()=> {
             return {
                 products,
@@ -47,9 +47,9 @@ const Login = {
     }
   
 };
-const Connect = {
-    template: '#connect',
-    name: 'Connect',
+const Login = {
+    template: '#login',
+    name: 'Login',
     computed: {
     },
     methods: {
@@ -66,6 +66,9 @@ const Connect = {
             .then( response => {
                 response.json().then(data => {
                 console.log(data.token);
+                if(response.status == 200){
+                    this.$router.push({ path: '/'})
+                }
                 })})
         }
     }
@@ -80,8 +83,8 @@ const Planif = {
 const router = new VueRouter({
     routes: [
         { path: '/', component: Home, name: 'Home' },
+        { path: '/sign-up', component: Signup, name: 'Signup' },
         { path: '/login', component: Login, name: 'Login' },
-        { path: '/connect', component: Connect, name: 'Connect' },
         { path: '/plannif', component: Planif, name: 'Planif' },
     ]
 });
