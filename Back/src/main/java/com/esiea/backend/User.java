@@ -22,6 +22,7 @@ public class User {
     private String username;
     private String password;
     private String name;
+    private String email;
 
     public long getId() {
         return id;
@@ -55,6 +56,13 @@ public class User {
         this.name = name;
     }
 
-
+    public  void setEmail(String email)
+    {
+        this.email = email;
+    }
+    public String getEmail()
+    {
+        return this.email;
+    }
 
 }
