@@ -24,7 +24,7 @@ const Home = {
     name: 'Home',
     data:() => {
         return {
-            token: "",
+            token: '',
         }
     },
     mounted() {

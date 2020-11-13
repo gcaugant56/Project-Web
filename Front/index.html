@@ -75,10 +75,12 @@
       <script type="text/x-template" id="home">
         <div id="homepage">
           <h1>Home Page</h1>
-          <div v-if="token != ''">
+          <div v-if="token == null">
+            <h1>Veuillez vous connecter svp</h1>
+          </div>
+          <div v-else>
             <h1>Bonjour {{token}}</h1>
           </div>
-          <div v-else>Veuillez vous connecter svp</div>
         </div>
       </script>
 
