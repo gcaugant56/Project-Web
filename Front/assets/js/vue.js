@@ -11,9 +11,9 @@ const Home = {
     template: "<h1>HOME</h1>",
     name: 'Home'
 };
-const Login = {
-    template: '#login',
-    name: "Login",
+const Signup = {
+    template: '#signup',
+    name: "Signup",
         data: ()=> {
             return {
                 products,
@@ -83,7 +83,7 @@ const Planif = {
 const router = new VueRouter({
     routes: [
         { path: '/', component: Home, name: 'Home' },
-        { path: '/login', component: Login, name: 'Login' },
+        { path: '/sign-up', component: Signup, name: 'Signup' },
         { path: '/connect', component: Connect, name: 'Connect' },
         { path: '/plannif', component: Planif, name: 'Planif' },
     ]
