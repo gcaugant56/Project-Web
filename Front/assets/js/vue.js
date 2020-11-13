@@ -34,12 +34,13 @@ const Login = {
             var pseudo = document.getElementById("pseudo").value;
             console.log("username : " + username + "\npassword : " + password + "\npseudo : " + pseudo);
       
-            const rawResponse = await fetch('http://localhost:8085/user/root?'+ "username=" + username + "&password=" + password + "&name=" + pseudo, {
+            const rawResponse = await fetch('http://localhost:8085/registration', {
               method: 'POST',
               headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
-              }});
+              },
+            body: JSON.stringify({username: username, password: password, name: pseudo})
+            });
             const content = await rawResponse.json();
             console.log(content);
             }
