@@ -47,9 +47,9 @@ const Signup = {
     }
   
 };
-const Connect = {
-    template: '#connect',
-    name: 'Connect',
+const Login = {
+    template: '#login',
+    name: 'Login',
     computed: {
     },
     methods: {
@@ -84,7 +84,7 @@ const router = new VueRouter({
     routes: [
         { path: '/', component: Home, name: 'Home' },
         { path: '/sign-up', component: Signup, name: 'Signup' },
-        { path: '/connect', component: Connect, name: 'Connect' },
+        { path: '/login', component: Login, name: 'Login' },
         { path: '/plannif', component: Planif, name: 'Planif' },
     ]
 });
