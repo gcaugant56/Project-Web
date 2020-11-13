@@ -55,6 +55,7 @@
     </script>
 
 
+
   <script type="text/x-template" id="login">
         <div id="connexion">
           <h1>Se connecter</h1>
@@ -71,6 +72,17 @@
         </div>
       </script>
 
+      <script type="text/x-template" id="home">
+        <div id="homepage">
+          <h1>Home Page</h1>
+          <div v-if="token == null">
+            <h1>Veuillez vous connecter svp</h1>
+          </div>
+          <div v-else>
+            <h1>Bonjour {{token}}</h1>
+          </div>
+        </div>
+      </script>
 
 
 
@@ -79,7 +91,9 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@2.0.0"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vue-cookies@1.5.12/vue-cookies.js"></script>
     <script src="./assets/js/vue.js" type="text/javascript"></script>
     <script src="./assets/js/script.js"></script>
   </body>
