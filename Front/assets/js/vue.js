@@ -67,6 +67,10 @@ const Login = {
                 response.json().then(data => {
                 console.log(data.token);
                 if(response.status == 200){
+                    let d = new Date();
+                    d.setTime(d.getTime() + 1 * 10 * 60 * 60 * 1000);
+                    let expires = "expires=" + d.toUTCString();
+                    document.cookie = "Token=" + data.token + ";" + expires + ";path=/";
                     this.$router.push({ path: '/'})
                 }
                 })})
