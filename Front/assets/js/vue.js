@@ -1,21 +1,17 @@
-const products = [
-    {text: "blablabla"},
-    {text: "azazazazaz"},
-    {text: "qsqsqsqsqs"},
-    {text: "wxwxwxwxwx"},
-    {text: "rtrtrtrt"},
-    {text: "fgfgfgfg"},
-];
 
 const store = new Vuex.Store({
     token: "",
     mutations: {
         getCookie() {
-            cookie = JSON.parse($cookies.get('token'));
-            console.log("store | getcookie() | valeur token | " + cookie);
-            store.token = cookie;
-            return cookie;
-        }
+            if($cookies.get('token')){
+                cookie = JSON.parse($cookies.get('token'));
+                console.log("store | getcookie() | valeur token | " + cookie);
+                store.token = cookie;
+                return cookie;
+            }else{
+                console.log("il n'y a pas de cookie token");
+            }
+        },
     }
 })
 
@@ -25,12 +21,39 @@ const Home = {
     data:() => {
         return {
             token: '',
+            id: '',
+            username: '',
+            pseudo: '',
+            mail: ''
+        }
+    },
+    methods: {
+        getUser() {
+            if (store.token == "" || store.token == "null"){
+                console.log("aucun token");
+            }else{
+                console.log('Bearer ' + store.token);
+                fetch("http://localhost:8085/user", {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + store.token,
+                }})
+            .then( response => {
+                response.json().then(data => {
+                console.log(data);
+                this.id = data.id;
+                this.username = data.username;
+                this.pseudo = data.name;
+                this.mail = data.email;
+                })})
+            }
         }
     },
     mounted() {
         store.commit('getCookie');
         console.log("home | fin mounted | valeur token store | " + store.token);
         this.token = store.token;
+        this.getUser();
     }
 };
 const Signup = {
@@ -38,7 +61,6 @@ const Signup = {
     name: "Signup",
         data: ()=> {
             return {
-                products,
             }
         },
     computed: {
@@ -76,7 +98,7 @@ const Login = {
     computed: {
     },
     methods: {
-        getUser() {
+        login() {
            var nameUser = document.getElementById("usernamefield").value;
            var passwordUser = document.getElementById("passwordfield").value;
             fetch("http://localhost:8085/authentification", {
