@@ -71,6 +71,10 @@ public class HomeController {
     @ResponseBody
     public boolean createUser(@RequestBody User user)
     {
+        if(user.getEmail().isEmpty() || user.getName().isEmpty() || user.getPassword().isEmpty() || user.getEmail().isEmpty())
+        {
+            return false;
+        }
         return userService.createUser(user.getUsername(),user.getPassword(),user.getName(),user.getEmail());
     }
 
