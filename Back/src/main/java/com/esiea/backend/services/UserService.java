@@ -1,5 +1,8 @@
-package com.esiea.backend;
+package com.esiea.backend.services;
 
+import com.esiea.backend.SecurityConfigurer;
+import com.esiea.backend.User;
+import com.esiea.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

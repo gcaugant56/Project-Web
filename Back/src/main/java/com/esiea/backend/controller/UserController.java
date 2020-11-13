@@ -1,9 +1,10 @@
-package com.esiea.backend;
+package com.esiea.backend.controller;
 
-import antlr.Token;
+import com.esiea.backend.User;
 import com.esiea.backend.models.Authenticationrequest;
 import com.esiea.backend.models.AuthentificationResponse;
 import com.esiea.backend.services.MyUserDetailsService;
+import com.esiea.backend.services.UserService;
 import com.esiea.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 @CrossOrigin(origins = "http://localhost:5500")
-public class HomeController {
+public class UserController {
     @Autowired
     UserService userService;
 
@@ -44,7 +42,6 @@ public class HomeController {
         {
             throw new Exception("Nom d'utilisateur ou mot de passe incorrect", e);
         }
-        UserDetailsService userDetailsService;
         final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationrequest.getUsername());
         final String token = Tokenutil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthentificationResponse(token));

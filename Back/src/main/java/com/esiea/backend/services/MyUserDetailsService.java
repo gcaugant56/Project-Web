@@ -1,6 +1,6 @@
 package com.esiea.backend.services;
 
-import com.esiea.backend.UserRepository;
+import com.esiea.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
