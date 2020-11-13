@@ -55,10 +55,17 @@ const Connect = {
     methods: {
         getUser() {
            var nameUser = document.getElementById("usernamefield").value;
-            fetch("http://localhost:8085/user/root?username="+ nameUser)
+           var passwordUser = document.getElementById("passwordfield").value;
+            fetch("http://localhost:8085/authentification", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({username: nameUser, password: passwordUser})
+            })
             .then( response => {
                 response.json().then(data => {
-                console.log(data.username);
+                console.log(data.token);
                 })})
         }
     }
