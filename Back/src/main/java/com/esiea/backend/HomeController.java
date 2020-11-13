@@ -71,7 +71,7 @@ public class HomeController {
     @ResponseBody
     public boolean createUser(@RequestBody User user)
     {
-        return userService.createUser(user.getUsername(),user.getPassword(),user.getName());
+        return userService.createUser(user.getUsername(),user.getPassword(),user.getName(),user.getEmail());
     }
 
 }
