@@ -34,24 +34,42 @@
       </nav>
       <router-view></router-view>
     
+
+
       <script type="text/x-template" id="login">
       <div id="inscriton">
+        <h1>S'inscrire</h1>
         <form id="formulaire">
           <label for="username">UserName : </label>
           <input type="text" id="username">
         </br>
           <label for="pseudo">Pseudo : </label>
-          <input type="text" id="Pseudo">
+          <input type="text" id="pseudo">
       </br>
           <label for="password">Password</label>
           <input type="text" id="password">
     </br>
-          <div v-for="product in products">
-            <h1>{{product.text}}</h1>
-          </div>
+    <button v-on:click="postUser">Envoyer</button>
         </form>
       </div>
     </script>
+
+
+  <script type="text/x-template" id="connect">
+        <div id="connexion">
+          <h1>Se connecter</h1>
+          <form id="formulaire">
+            <label for="usernamefield">UserName : </label>
+            <input type="text" id="usernamefield">
+          
+      <button v-on:click="getUser">Envoyer</button>
+          </form>
+        </div>
+      </script>
+
+
+
+
     </div>
 
 
