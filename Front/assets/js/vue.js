@@ -7,6 +7,18 @@ const products = [
     {text: "fgfgfgfg"},
 ];
 
+const store = new Vuex.Store({
+    token: "",
+    mutations: {
+        getCookie() {
+            cookie = JSON.parse($cookies.get('token'));
+            console.log("getcookie() | valeur token | " + cookie);
+            store.token = cookie;
+            return cookie;
+        }
+    }
+})
+
 const Home = {
     template: "<h1>HOME</h1>",
     name: 'Home'
@@ -67,8 +79,11 @@ const Login = {
                 response.json().then(data => {
                 console.log(data.token);
                 if(response.status == 200){
-                    $cookies.set('tokentoken', JSON.stringify(data.token));
-                    this.$router.push({ path: '/'})
+                    $cookies.set('token', JSON.stringify(data.token));
+                    this.$router.push({ path: '/'});
+                    store.commit('getCookie');
+                    console.log("valeur du cookie : " + store.token);
+                    console.log("fin fonction");
                 }else{
                 }
                 })})
