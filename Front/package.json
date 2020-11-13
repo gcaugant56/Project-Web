@@ -1,42 +1,20 @@
 {
-  "name": "project-web",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vue-project",
+  "version": "1.0.0",
+  "description": "Avec : \r * des photos randoms\r * une navbar toute faite\r * un body tout fait\r * des sons\r * des svg\r * jQuery et Bootstrap reliés",
+  "main": "script.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass" : "sass --watch ./assets/style/main.scss:./assets/style/style.css"
   },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustFS/vue-project.git"
   },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0"
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustFS/vue-project/issues"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  "homepage": "https://github.com/JustFS/vue-project#readme"
 }

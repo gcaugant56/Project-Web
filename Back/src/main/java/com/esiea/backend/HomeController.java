@@ -59,7 +59,7 @@ public class HomeController {
         return userService.getUser();
     }
 
-    @GetMapping("/user/{username}")
+    @GetMapping("/user/{username}") //user/root?username=toto
     @ResponseBody
     public User getUserByUsername(@RequestParam String username)
     {
