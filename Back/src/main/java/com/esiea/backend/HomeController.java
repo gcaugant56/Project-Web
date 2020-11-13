@@ -50,22 +50,14 @@ public class HomeController {
         return ResponseEntity.ok(new AuthentificationResponse(token));
     }
 
-    @GetMapping("/")
-    public String home()
-    {
-        return "test";
-    }
-
 
     @GetMapping("/user")
     @ResponseBody
     public User getUserByUsername(@RequestBody String token)
     {
         String[] jsonParse;
-        System.out.println(token);
         jsonParse = token.split("\"");
         String username = Tokenutil.extractUsername(jsonParse[3]);
-        System.out.println(username);
         User user =  userService.getUserByUsername(username);
         user.hiddenPassword();
         return user;
