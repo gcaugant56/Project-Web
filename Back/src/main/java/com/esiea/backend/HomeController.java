@@ -1,5 +1,6 @@
 package com.esiea.backend;
 
+import antlr.Token;
 import com.esiea.backend.models.Authenticationrequest;
 import com.esiea.backend.models.AuthentificationResponse;
 import com.esiea.backend.services.MyUserDetailsService;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -54,17 +56,19 @@ public class HomeController {
         return "test";
     }
 
-    @GetMapping("/user/all")
-    public List<User> getAll()
-    {
-        return userService.getUser();
-    }
 
-    @GetMapping("/user/{username}") //user/root?username=toto
+    @GetMapping("/user")
     @ResponseBody
-    public User getUserByUsername(@RequestParam String username)
+    public User getUserByUsername(@RequestBody String token)
     {
-        return userService.getUserByUsername(username);
+        String[] jsonParse;
+        System.out.println(token);
+        jsonParse = token.split("\"");
+        String username = Tokenutil.extractUsername(jsonParse[3]);
+        System.out.println(username);
+        User user =  userService.getUserByUsername(username);
+        user.hiddenPassword();
+        return user;
     }
 
     @PostMapping("/registration")
