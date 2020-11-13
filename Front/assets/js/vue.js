@@ -66,6 +66,9 @@ const Connect = {
             .then( response => {
                 response.json().then(data => {
                 console.log(data.token);
+                if(response.status == 200){
+                    this.$router.push({ path: '/'})
+                }
                 })})
         }
     }
