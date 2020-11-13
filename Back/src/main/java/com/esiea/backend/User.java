@@ -65,4 +65,8 @@ public class User {
         return this.email;
     }
 
+    public void hiddenPassword()
+    {
+        this.password = "************";
+    }
 }

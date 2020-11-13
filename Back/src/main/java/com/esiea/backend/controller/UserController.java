@@ -1,8 +1,10 @@
-package com.esiea.backend;
+package com.esiea.backend.controller;
 
+import com.esiea.backend.User;
 import com.esiea.backend.models.Authenticationrequest;
 import com.esiea.backend.models.AuthentificationResponse;
 import com.esiea.backend.services.MyUserDetailsService;
+import com.esiea.backend.services.UserService;
 import com.esiea.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +15,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin(origins = "http://localhost:5500")
-public class HomeController {
+public class UserController {
     @Autowired
     UserService userService;
 
@@ -42,29 +42,22 @@ public class HomeController {
         {
             throw new Exception("Nom d'utilisateur ou mot de passe incorrect", e);
         }
-        UserDetailsService userDetailsService;
         final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationrequest.getUsername());
         final String token = Tokenutil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthentificationResponse(token));
     }
 
-    @GetMapping("/")
-    public String home()
-    {
-        return "test";
-    }
 
-    @GetMapping("/user/all")
-    public List<User> getAll()
-    {
-        return userService.getUser();
-    }
-
-    @GetMapping("/user/{username}") //user/root?username=toto
+    @GetMapping("/user")
     @ResponseBody
-    public User getUserByUsername(@RequestParam String username)
+    public User getUserByUsername(@RequestBody String token)
     {
-        return userService.getUserByUsername(username);
+        String[] jsonParse;
+        jsonParse = token.split("\"");
+        String username = Tokenutil.extractUsername(jsonParse[3]);
+        User user =  userService.getUserByUsername(username);
+        user.hiddenPassword();
+        return user;
     }
 
     @PostMapping("/registration")
