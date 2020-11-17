@@ -32,7 +32,7 @@ public class UserController {
     @Autowired
     private JwtUtil Tokenutil;
 
-    @PostMapping("/authentification")
+    @PostMapping("/user/authentification")
     public ResponseEntity<?> createAuthentificationToken(@RequestBody Authenticationrequest authenticationrequest) throws Exception {
         try {
             authenticationManager.authenticate
@@ -54,19 +54,35 @@ public class UserController {
     @ResponseBody
     public User getUserByUsername(@RequestHeader("Authorization") Map<String, String> headers)
     {
-        String token = headers.get("authorization");
-        token = token.substring(7);
-        String username = Tokenutil.extractUsername(token);
+        String username = userService.getUsernameFromToken(headers.get("authorization"));
         User user =  userService.getUserByUsername(username);
         user.hiddenPassword();
         return user;
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/user/registration")
     @ResponseBody
     public boolean createUser(@RequestBody User user)
     {
         return userService.createUser(user.getUsername(),user.getPassword(),user.getName(),user.getEmail());
+    }
+
+    @PostMapping("/user/password")
+    @ResponseBody
+    public boolean changePassword(@RequestBody Map<String, String> requestsBody,@RequestHeader("Authorization") Map<String, String> headers)
+    {
+      String password = requestsBody.get("password");
+      String username = userService.getUsernameFromToken(headers.get("authorization"));
+      return userService.changePassword(username,password);
+    }
+
+    @PostMapping("/user/mail")
+    @ResponseBody
+    public boolean changeMail(@RequestBody Map<String, String> requestsBody,@RequestHeader("Authorization") Map<String, String> headers)
+    {
+        String email = requestsBody.get("email");
+        String username = userService.getUsernameFromToken(headers.get("authorization"));
+        return userService.changeMail(username,email);
     }
 
 }
