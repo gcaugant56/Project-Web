@@ -62,6 +62,19 @@ public class UserService {
         return false;
     }
 
+    public boolean changeMail(String username, String mail)
+    {
+        User user = userRepository.getUserByUsername(username);
+        if(user != null)
+        {
+            userRepository.delete(user);
+            user.setEmail(mail);
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
     public String getUsernameFromToken(String token)
     {
         token = token.substring(7);

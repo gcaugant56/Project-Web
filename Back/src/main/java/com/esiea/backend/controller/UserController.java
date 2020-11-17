@@ -76,4 +76,13 @@ public class UserController {
       return userService.changePassword(username,password);
     }
 
+    @PostMapping("/user/mail")
+    @ResponseBody
+    public boolean changeMail(@RequestBody Map<String, String> requestsBody,@RequestHeader("Authorization") Map<String, String> headers)
+    {
+        String email = requestsBody.get("email");
+        String username = userService.getUsernameFromToken(headers.get("authorization"));
+        return userService.changeMail(username,email);
+    }
+
 }
