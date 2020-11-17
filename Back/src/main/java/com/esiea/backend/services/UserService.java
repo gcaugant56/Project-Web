@@ -3,6 +3,7 @@ package com.esiea.backend.services;
 import com.esiea.backend.SecurityConfigurer;
 import com.esiea.backend.User;
 import com.esiea.backend.repository.UserRepository;
+import com.esiea.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,6 +16,9 @@ public class UserService {
 
     @Autowired
     private SecurityConfigurer passwordEncoder;
+
+    @Autowired
+    private JwtUtil TokenUtil;
 
     public List<User> getUser()
     {
@@ -44,5 +48,23 @@ public class UserService {
             return true;
         }
 
+    }
+    public boolean changePassword(String username, String password)
+    {
+        User user = userRepository.getUserByUsername(username);
+        if(user != null)
+        {
+            userRepository.delete(user);
+            user.setPassword(passwordEncoder.passwordEncoder().encode(password));
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
+    public String getUsernameFromToken(String token)
+    {
+        token = token.substring(7);
+        return TokenUtil.extractUsername(token);
     }
 }
