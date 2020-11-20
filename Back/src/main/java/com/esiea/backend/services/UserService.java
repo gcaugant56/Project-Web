@@ -54,7 +54,6 @@ public class UserService {
         User user = userRepository.getUserByUsername(username);
         if(user != null)
         {
-            userRepository.delete(user);
             user.setPassword(passwordEncoder.passwordEncoder().encode(password));
             userRepository.save(user);
             return true;
@@ -67,7 +66,6 @@ public class UserService {
         User user = userRepository.getUserByUsername(username);
         if(user != null)
         {
-            userRepository.delete(user);
             user.setEmail(mail);
             userRepository.save(user);
             return true;
