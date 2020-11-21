@@ -37,25 +37,42 @@
 
 
       <script type="text/x-template" id="signup">
-      <div id="inscriton">
-        <h1>S'inscrire</h1>
-        <form id="formulaire">
-          <label for="username">UserName : </label>
-          <input type="text" id="username">
-        </br>
-        <label for="mail">Mail : </label>
-          <input type="mail" id="mail">
-        </br>
-          <label for="pseudo">Pseudo : </label>
-          <input type="text" id="pseudo">
-      </br>
-          <label for="password">Password</label>
-          <input type="text" id="password">
-    </br>
-    <button v-on:click="postUser">Envoyer</button>
-        </form>
-      </div>
-    </script>
+
+        <div class="container">
+          <div class="forms-container">
+            <div class="signin-signup">
+
+              <form action="" id="form" class="sign-in-form">
+                <h2 class="title">S'inscrire</h2>
+
+                <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="username" placeholder="userName">
+                </div>
+
+                <div class="input-field">
+                  <i class="fas fa-at"></i>
+                  <input type="mail" id="mail" placeholder="mail">
+                </div>
+
+                <div class="input-field">
+                  <i class="fas fa-user-tag"></i>
+                  <input type="text" id="pseudo" placeholder="Pseudo">
+                </div>
+
+                <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" id="password" placeholder="password">
+                </div>
+
+                  <button v-on:click="postUser" value="Login" class="btn solid">Envoyer</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </script>
 
 
 
