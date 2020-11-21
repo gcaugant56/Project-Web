@@ -79,7 +79,7 @@ const Signup = {
             var mail = document.getElementById("mail").value;
             console.log("username : " + username + "\npassword : " + password + "\npseudo : " + pseudo + '\nmail : ' + mail);
       
-            const rawResponse = await fetch('http://localhost:8085/registration', {
+            const rawResponse = await fetch('http://localhost:8085/user/registration', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ const Login = {
         login() {
            var nameUser = document.getElementById("usernamefield").value;
            var passwordUser = document.getElementById("passwordfield").value;
-            fetch("http://localhost:8085/authentification", {
+            fetch("http://localhost:8085/user/authentification", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
