@@ -24,7 +24,17 @@ const Home = {
             id: '',
             username: '',
             pseudo: '',
-            mail: ''
+            mail: '',
+            events: {
+                id: '',
+                name: '',
+                place:'',
+                participant: [],
+                date:'',
+                creator:'',
+                
+            },
+            tab: [{}],
         }
     },
     methods: {
@@ -47,13 +57,36 @@ const Home = {
                 this.mail = data.email;
                 })})
             }
+        },
+        getEvent() {
+                fetch("http://localhost:8085/event/all", {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + store.token,
+                }})
+            .then( response => {
+                response.json().then(data => {
+                console.log(data);
+                data.forEach(element => {
+                    this.events.id = element.id;
+                    this.events.name = element.name;
+                    this.events.place = element.place;
+                    this.events.participant = element.participant;
+                    this.events.date = element.date;
+                    this.events.creator = element.creator;
+                    this.tab.push(this.events);
+                });
+            })})
         }
+
     },
     mounted() {
         store.commit('getCookie');
         console.log("home | fin mounted | valeur token store | " + store.token);
         this.token = store.token;
         this.getUser();
+        this.getEvent();
+
     }
 };
 const Signup = {
