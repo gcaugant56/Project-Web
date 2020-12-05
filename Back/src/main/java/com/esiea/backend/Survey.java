@@ -21,7 +21,7 @@ public class Survey {
     private long id;
     private String voterName;
     private String voterChoice;
-    private int voterEvent;
+    private String voterEventId;
 
     public long getId() {
         return id;
@@ -47,11 +47,11 @@ public class Survey {
         this.voterChoice = voterChoice;
     }
 
-    public int getVoterEvent() {
-        return voterEvent;
+    public String getVoterEventId() {
+        return voterEventId;
     }
 
-    public void setVoterEvent(int voterEvent) {
-        this.voterEvent = voterEvent;
+    public void setVoterEventId(String voterEventId) {
+        this.voterEventId = voterEventId;
     }
 }

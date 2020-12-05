@@ -11,7 +11,11 @@ public class SurveyService {
     SurveyRepository surveyRepository;
 
     public boolean createSurvey(Survey survey){
-        surveyRepository.save(survey);
-        return true;
+        Survey getDate = surveyRepository.getSurveyByVoterChoiceAndVoterEventIdAndVoterName(survey.getVoterChoice(), survey.getVoterEventId(), survey.getVoterName());
+        if (getDate == null){
+            surveyRepository.save(survey);
+            return true;
+        }
+        return false;
     }
 }

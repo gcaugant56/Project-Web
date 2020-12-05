@@ -17,7 +17,6 @@ public class SurveyController {
 
     @PostMapping("/survey/create")
     public boolean createSurvey(@RequestBody Survey survey){
-        surveyService.createSurvey(survey);
-        return true;
+        return surveyService.createSurvey(survey);
     }
 }
