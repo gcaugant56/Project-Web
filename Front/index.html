@@ -17,11 +17,11 @@
       <nav>
         <div class="nav-container">
           <ul>
-            <router-link to="/login">
+            <!--<router-link to="/login">
             <li><a>Se connecter</a></li>
-            </router-link>
+            </router-link>-->
             <router-link to="/sign-up">
-            <li><a>S'incrire</a></li>
+            <li><a>Se connecter / s'incrire</a></li>
             </router-link>
               <router-link to="/plannif">
             <li><a>Plannifier une réunion</a></li>
@@ -110,7 +110,7 @@
                 <div class="content">
                   <h3>One of us ?</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio ? </p>
-                  <button class="btn transparent" id="sign-up-btn">Sign up</button>
+                  <button class="btn transparent" id="sign-up-btn">Sign in</button>
                 </div>
                 <img src="assets/img/register.svg" class="image" alt="">
               </div>
@@ -125,41 +125,41 @@
 
 
 
-  <script type="text/x-template" id="login">
-        <div id="connexion">
-          <h1>Se connecter</h1>
-          <form id="formulaire">
-            <label for="usernamefield">UserName : </label>
-            <input type="text" id="usernamefield">
-          </br>
-            <label for="passwordfield">Password : </label>
-            <input type="text" id="passwordfield">
-          </br>
-          
-      <button v-on:click="login">Envoyer</button>
-          </form>
-        </div>
-      </script>
+      <script type="text/x-template" id="login">
+            <div id="connexion">
+              <h1>Se connecter</h1>
+              <form id="formulaire">
+                <label for="usernamefield">UserName : </label>
+                <input type="text" id="usernamefield">
+              </br>
+                <label for="passwordfield">Password : </label>
+                <input type="text" id="passwordfield">
+              </br>
+              
+          <button v-on:click="login">Envoyer</button>
+              </form>
+            </div>
+          </script>
 
-      <script type="text/x-template" id="home">
-        <div id="homepage">
-          <h1>Home Page</h1>
-          <div v-if="token == null">
-            <h1>Veuillez vous connecter svp</h1>
-          </div>
-          <div v-else>
-            <h1>Bonjour {{pseudo}}</h1>
-            <h2>UserName : {{username}}</h2>
-            <h2>Mail : {{mail}}</h2>
-            
-            <p v-for="event in tab">
-              {{event}}
-            </p>
-            
-      
-          </div>
-        </div>
-      </script>
+          <script type="text/x-template" id="home">
+            <div id="homepage">
+              <h1>Home Page</h1>
+              <div v-if="token == null">
+                <h1>Veuillez vous connecter svp</h1>
+              </div>
+              <div v-else>
+                <h1>Bonjour {{pseudo}}</h1>
+                <h2>UserName : {{username}}</h2>
+                <h2>Mail : {{mail}}</h2>
+                
+                <p v-for="event in tab">
+                  {{event}}
+                </p>
+                
+          
+              </div>
+            </div>
+          </script>
 
 
 
