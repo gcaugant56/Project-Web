@@ -148,15 +148,6 @@ const Signup = {
   
 };
 
-const Login = {
-    template: '#login',
-    name: 'Login',
-    computed: {
-    },
-    methods: {
-    }
-};
-
 
 const Planif = {
     template: '<h1>Plannifier une réunion</h1>',
@@ -169,7 +160,6 @@ const router = new VueRouter({
     routes: [
         { path: '/', component: Home, name: 'Home' },
         { path: '/sign-up', component: Signup, name: 'Signup' },
-        { path: '/login', component: Login, name: 'Login' },
         { path: '/plannif', component: Planif, name: 'Planif' },
     ]
 });
