@@ -99,13 +99,6 @@ const Signup = {
     computed: {
     },
     methods: {
-        test() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var pseudo = document.getElementById("pseudo").value;
-            console.log("username : " + username + "\npassword : " + password + "\npseudo : " + pseudo);
-          },
-
         postUser: async() => {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
