@@ -24,7 +24,17 @@ const Home = {
             id: '',
             username: '',
             pseudo: '',
-            mail: ''
+            mail: '',
+            events: {
+                id: '',
+                name: '',
+                place:'',
+                participant: [],
+                date:'',
+                creator:'',
+                
+            },
+            tab: [{}],
         }
     },
     methods: {
@@ -47,13 +57,36 @@ const Home = {
                 this.mail = data.email;
                 })})
             }
+        },
+        getEvent() {
+                fetch("http://localhost:8085/event/all", {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + store.token,
+                }})
+            .then( response => {
+                response.json().then(data => {
+                console.log(data);
+                data.forEach(element => {
+                    this.events.id = element.id;
+                    this.events.name = element.name;
+                    this.events.place = element.place;
+                    this.events.participant = element.participant;
+                    this.events.date = element.date;
+                    this.events.creator = element.creator;
+                    this.tab.push(this.events);
+                });
+            })})
         }
+
     },
     mounted() {
         store.commit('getCookie');
         console.log("home | fin mounted | valeur token store | " + store.token);
         this.token = store.token;
         this.getUser();
+        this.getEvent();
+
     }
 };
 const Signup = {
@@ -66,20 +99,14 @@ const Signup = {
     computed: {
     },
     methods: {
-        test() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var pseudo = document.getElementById("pseudo").value;
-            console.log("username : " + username + "\npassword : " + password + "\npseudo : " + pseudo);
-          },
-          postUser: async() => {
+        postUser: async() => {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
             var pseudo = document.getElementById("pseudo").value;
             var mail = document.getElementById("mail").value;
             console.log("username : " + username + "\npassword : " + password + "\npseudo : " + pseudo + '\nmail : ' + mail);
       
-            const rawResponse = await fetch('http://localhost:8085/registration', {
+            const rawResponse = await fetch('http://localhost:8085/user/registration', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -88,38 +115,33 @@ const Signup = {
             });
             const content = await rawResponse.json();
             console.log(content);
+            },
+
+        login() {
+            var nameUser = document.getElementById("username-login").value;
+            var passwordUser = document.getElementById("password-login").value;
+                fetch("http://localhost:8085/user/authentification", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({username: nameUser, password: passwordUser})
+                })
+                .then( response => {
+                    response.json().then(data => {
+                    console.log(data.token);
+                    if(response.status == 200){
+                        $cookies.set('token', JSON.stringify(data.token));
+                        this.$router.push({ path: '/'});
+                    }else{
+                    }
+                    })})
             }
     }
   
 };
-const Login = {
-    template: '#login',
-    name: 'Login',
-    computed: {
-    },
-    methods: {
-        login() {
-           var nameUser = document.getElementById("usernamefield").value;
-           var passwordUser = document.getElementById("passwordfield").value;
-            fetch("http://localhost:8085/authentification", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({username: nameUser, password: passwordUser})
-            })
-            .then( response => {
-                response.json().then(data => {
-                console.log(data.token);
-                if(response.status == 200){
-                    $cookies.set('token', JSON.stringify(data.token));
-                    this.$router.push({ path: '/'});
-                }else{
-                }
-                })})
-        }
-    }
-};
+
+
 const Planif = {
     template: '<h1>Plannifier une réunion</h1>',
     name: 'Planif'
@@ -131,7 +153,6 @@ const router = new VueRouter({
     routes: [
         { path: '/', component: Home, name: 'Home' },
         { path: '/sign-up', component: Signup, name: 'Signup' },
-        { path: '/login', component: Login, name: 'Login' },
         { path: '/plannif', component: Planif, name: 'Planif' },
     ]
 });
