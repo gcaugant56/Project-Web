@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class EventService {
@@ -41,5 +42,18 @@ public class EventService {
     {
         token = token.substring(7);
         return TokenUtil.extractUsername(token);
+    }
+    public boolean deleteEvent(Event event)
+    {
+        try
+        {
+            eventRepository.delete(event);
+        }
+        catch (Exception e )
+        {
+            return false;
+        }
+
+        return true;
     }
 }
