@@ -34,7 +34,7 @@ const Home = {
                 creator:'',
                 
             },
-            tab: [{}],
+            tab: [],
         }
     },
     methods: {
@@ -68,17 +68,19 @@ const Home = {
                 response.json().then(data => {
                 console.log(data);
                 data.forEach(element => {
-                    this.events.id = element.id;
-                    this.events.name = element.name;
-                    this.events.place = element.place;
-                    this.events.participant = element.participant;
-                    this.events.date = element.date;
-                    this.events.creator = element.creator;
-                    this.tab.push(this.events);
+                    var event = new Object();
+                    event.id = element.id;
+                    event.username = element.username;
+                    event.name = element.name;
+                    event.participant = element.participant;
+                    event.date = element.date;
+                    event.creator = element.creator;
+                    this.tab.push(event);
                 });
+                console.log(this.tab);
+                console.log("fin affichage tab");
             })})
-        }
-
+        },
     },
     mounted() {
         store.commit('getCookie');
@@ -143,8 +145,20 @@ const Signup = {
 
 
 const Planif = {
-    template: '<h1>Plannifier une réunion</h1>',
-    name: 'Planif'
+    template: '#planif',
+    name: 'Planif',
+    data: ()=> {
+        return {
+            token: "",
+
+        }
+    },
+    methods: {
+
+    },
+    mounted() {
+        
+    }
 };
 
 

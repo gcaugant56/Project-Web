@@ -126,6 +126,25 @@
       </script>
 
 
+    <!--PAGE NOUVELLE PLANIF-->
+      <script type="text/x-template" id="planif">
+        <div id="planif">
+          <h1>Réunions plannifées</h1>
+          <div v-if="token == null">
+            <h1>Veuillez vous connecter svp</h1>
+          </div>
+          <div v-else>
+            <h1>Vous êtes bien connecté</h1>
+            <h2>Voici vos rénions en plannification</h2>
+          
+            <p v-for="event in tab">
+              {{event}}
+            </p>
+          </div>
+        </div>
+      </script>
+
+
     <!--FIN DU COMPOSANT PRINCIPAL #APP-->
     </div>
   
