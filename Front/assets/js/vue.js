@@ -70,6 +70,7 @@ const Home = {
                 data.forEach(element => {
                     var event = new Object();
                     event.id = element.id;
+                    console.log(event.id);
                     event.username = element.username;
                     event.name = element.name;
                     event.participant = element.participant;
@@ -88,6 +89,7 @@ const Home = {
         this.token = store.token;
         this.getUser();
         this.getEvent();
+
 
     }
 };

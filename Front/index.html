@@ -117,10 +117,9 @@
             <h1>Bonjour {{pseudo}}</h1>
             <h2>UserName : {{username}}</h2>
             <h2>Mail : {{mail}}</h2>
-          
-            <p v-for="event in tab">
-              {{event}}
-            </p>
+            <ul v-for="events in tab">
+              <li>{{events}}</li>
+            </ul>
           </div>
         </div>
       </script>
