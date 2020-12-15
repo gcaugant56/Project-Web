@@ -9,9 +9,13 @@
     <h1>Bonjour {{pseudo}}</h1>
     <h2>UserName : {{username}}</h2>
     <h2>Mail : {{mail}}</h2>
-    <li v-for="event in data">
-    {{ event.name }} ---- {{ event.id }} -----> {{ event.place }}
-    </li>
+    
+    <h1>Vos évenements</h1>
+    <div class="event" v-for="event in data">
+        <p>Nom : {{event.name}}</p>
+        <p>Participants : {{event.participant}}</p>
+    </div>
+
     </div>
 </div>
 
@@ -32,8 +36,7 @@ export default {
             username: '',
             pseudo: '',
             mail: '',
-            data:[{
-            }],
+            data:[],
         }
     },
     methods: {
@@ -84,5 +87,9 @@ export default {
 </script>
 <style>
 
+.event {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
   
 </style>
