@@ -1,108 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>Projet Web - Home page</title>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+  <title>Projet Web - Home page</title>
 
-    <link rel="icon" href="./assets/img/vueLogo.png" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
-    <link href="/src/assets/style/style.css" rel="stylesheet"/>
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <body>
-    <div id="app">
-      <!--BARRE DE NAVIGATION-->
-      <nav>
-        <div class="nav-container">
-          <ul>
-            <router-link to="/signup">
-            <li><a>S'inscrire</a></li>
-            </router-link>
-            <router-link to="/signin">
-              <li><a>Se connecter</a></li>
-              </router-link>
-            <router-link to="/plannif">
+  <link rel="icon" href="./assets/img/vueLogo.png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+  <link href="/src/assets/style/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div id="app">
+
+
+
+    <!--BARRE DE NAVIGATION-->
+    <nav>
+      <div class="nav-container">
+        <ul>
+          <router-link to="/signup">
+            <li id="inscription"><a>S'inscrire</a></li>
+          </router-link>
+          <router-link to="/signin">
+            <li id="connexion"><a>Se connecter</a></li>
+          </router-link>
+          <router-link to="/plannif">
             <li><a>Plannifier une réunion</a></li>
-            </router-link>
-            <router-link to="/">
+          </router-link>
+          <router-link to="/">
             <li style="float: left"><a class="active">Home</a></li>
-            </router-link>
-          </ul>
-        </div>
-      </nav>
-      <router-view></router-view>
-    </div>
+          </router-link>
+        </ul>
+      </div>
+    </nav>
+    <router-view></router-view>
+  </div>
 
 
 
 
 
 
+  <!-- STYLES CSS POUR MENU DE NAVIGATION ET LES STYLES GLOBAUX-->
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      display: inline;
+      float: right;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #4CAF50;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form {
+      padding: 30px 40px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .form {
+      align-items: unset;
+      justify-content: center;
+    }
 
 
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
-    <!-- STYLES CSS POUR MENU DE NAVIGATION ET LES STYLES GLOBAUX-->
-    <style>
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-      }
-      
-      li {
-        display: inline;
-        float: right;
-      }
-      
-      li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-      
-      li a:hover {
-        background-color: #111;
-      }
-      
-      .active {
-        background-color: #4CAF50;
-      }
-      
-      h1 {
-        text-align: center;
-      }
-      
-      .form {
-        padding: 30px 40px;
-      }
-      
-      * {
-        box-sizing: border-box;
-      }
-      
-      .form {
-        align-items: unset;
-        justify-content: center;
-      }
-      
-      
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-      
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      
-      body,
-      input {
-        font-family: "Poppins", sans-serif;
-      }
-    </style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body,
+    input {
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
