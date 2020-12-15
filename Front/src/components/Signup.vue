@@ -49,7 +49,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio ? </p>
                 <button class="btn transparent" id="sign-in-btn">Sign up</button>
               </div>
-              <img src="assets/img/log.svg" class="image" alt="">
+              <img src="../assets/img/log.svg" class="image" alt="">
             </div>
 
             <!--reste de la page du formulaire d'inscription-->
@@ -59,7 +59,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio ? </p>
                 <button class="btn transparent" id="sign-up-btn">Sign in</button>
               </div>
-              <img src="assets/img/register.svg" class="image" alt="">
+              <img src="../assets/img/register.svg" class="image" alt="">
             </div>
           </div>
         </div>
