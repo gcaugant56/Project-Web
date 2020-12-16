@@ -28,4 +28,4 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 
 ### Stack technique
 
-Voir le fichier STACK_TECHNIQUE.md
+![github-small]
