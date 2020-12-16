@@ -32,6 +32,9 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueSimpleAlert from "vue-simple-alert";
+Vue.use(VueSimpleAlert);
 
 export default {
   name: "Signup",
@@ -71,7 +74,13 @@ export default {
         }
       );
       const content = await rawResponse.json();
+      console.log("réponse de la requete de création d'un utilisateur : ")
       console.log(content);
+      if (content == true){
+        console.log("Votre compte à bien été créé. Vous pouvez maintenant vous connecter avec vos identifiants");
+      }else{
+        console.log("Erreur dans la création de votre compte, veuillez réessayer s'il vous plaît");
+      }
     },
   },
 };
