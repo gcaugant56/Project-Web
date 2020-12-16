@@ -96,4 +96,8 @@ export default {
 .evenement {
   cursor: pointer;
 }
+
+.evenement:hover{
+  background-color: rgba(22, 122, 194, 0.2);
+}
 </style>
