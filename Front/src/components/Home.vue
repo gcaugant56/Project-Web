@@ -11,8 +11,14 @@
 
       <h1>Vos évenements</h1>
       <div class="event" v-for="event in data">
-        <p>Nom : {{ event.name }}</p>
-        <p>Participants : {{ event.participant }}</p>
+
+        <div class="evenement" v-on:click="$router.push({ path: '/' + event.id})">
+          <div>
+            <p>Id : {{ event.id }}</p>
+            <p>Nom : {{ event.name }}</p>
+            <p>Participants : {{ event.participant }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -85,5 +91,9 @@ export default {
 .event {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.evenement {
+  cursor: pointer;
 }
 </style>
