@@ -23,6 +23,10 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueSimpleAlert from "vue-simple-alert";
+Vue.use(VueSimpleAlert);
+
 export default {
     name:'Signin',
     data: () => {
@@ -50,6 +54,7 @@ export default {
                         $cookies.set('token', data.token);
                         this.$router.push({ path: '/'});
                     }else{
+                      this.$alert("Nom d'utilisateur/Mot de passe incorrecte, Veuillez réessayer");
                     }
                     })})
             }
