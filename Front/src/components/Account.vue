@@ -52,12 +52,29 @@ export default {
 .main{
   display: flex;
   align-items: center;
+  border: 1px solid black;
+  background-color: #fff;
+  margin: 0 auto;
+  width: 400px;
+  box-shadow: -0.6rem 0.6rem 0 rgba(29, 30, 28, 0.26);
+  margin-top: 50px;
+}
+
+.title {
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  border-bottom: 1px solid black;
+   justify-content: center;
 }
 
 .container{
+
+}
+
+.user{
   display: flex;
   flex-direction: column;
-  width: 400px;
 }
 
 .ligne{
