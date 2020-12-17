@@ -1,11 +1,14 @@
 package com.esiea.backend.controller;
 
 import com.esiea.backend.Survey;
+import com.esiea.backend.Vote;
 import com.esiea.backend.services.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -23,9 +26,9 @@ public class SurveyController {
     }
 
     @GetMapping("/survey/count")
-    public Map<String,Integer> getCountVote(@RequestHeader Map<String,String> id){
-        Map<String,Integer> result = new HashMap<String, Integer>();
-        result = surveyService.getCount(id.get("id"));
-        return result;
+    public List<Vote> getCountVote(@RequestHeader Map<String,String> id){
+        List<Vote> votes = new ArrayList<>();
+        votes= surveyService.getCount(id.get("id"));
+        return votes;
     }
 }
