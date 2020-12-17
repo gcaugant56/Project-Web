@@ -5,25 +5,27 @@
       <div class="user-account">
         <div class="ligne-account">
           <div class="text">ID : </div>
-          <div class="text">{{}}</div>
+          <div class="text">{{id}}</div>
         </div>
         <div class="ligne-account">
           <div class="text">Username : </div>
-          <div class="text">{{}}</div>
+          <div class="text">{{username}}</div>
         </div>
         <div class="ligne-account">
           <div class="text">Pseudo : </div>
-          <div class="text">{{}}</div>
+          <div class="text">{{pseudo}}</div>
         </div>
         <div class="ligne-account">
           <div class="text">Password : </div>
           <div class="text"> **************</div>
-          <button v-on:click="" class="btn-account">Modifier</button>
+          <button id="pswd" v-on:click="$prompt('Entrez votre nouveau mot de passe : ', '', 'changment de mot de passe', 'question').then((text) => {
+            changePassword(text);
+            })" class="btn-account">Modifier</button>
         </div>
         <div class="ligne-account">
           <div class="text">Mail : </div>
-          <div class="text">{{}}</div>
-          <button v-on:click="" class="btn-account">Modifier</button>
+          <div class="text">{{mail}}</div>
+          <button v-on:click="document.alert('Hello Vue Simple Alert.')" class="btn-account">Modifier</button>
         </div>
         
 
@@ -41,9 +43,42 @@ Vue.use(VueSimpleAlert);
 export default {
   name: "Account",
   data: () => {
-    return {};
+    return {
+      token: "",
+      id: "",
+      username: "",
+      pseudo: "",
+      mail: "",
+    };
   },
   methods: {
+    getUser() {
+      if (this.token == "" || this.token == "null") {
+        console.log("aucun token");
+      } else {
+        console.log("Bearer " + this.token);
+        fetch("http://localhost:8085/user", {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + this.token,
+          },
+        }).then((response) => {
+          response.json().then((data) => {
+            this.id = data.id;
+            this.username = data.username;
+            this.pseudo = data.name;
+            this.mail = data.email;
+          });
+        });
+      }
+    },
+    changePassword(pswd) {
+      
+    }
+  },
+  mounted() {
+    this.token = $cookies.get("token");
+    this.getUser();
   }
 };
 </script>
