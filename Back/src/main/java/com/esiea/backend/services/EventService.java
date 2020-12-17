@@ -17,9 +17,9 @@ public class EventService {
     @Autowired
     private JwtUtil TokenUtil;
 
-    public Event getEventByName(String name)
+    public Event getEventbyId(long id)
     {
-        return eventRepository.getEventByName(name);
+        return eventRepository.getEventById(id);
     }
     public boolean createEvent(String name, String place, String date, String participant,String creator)
     {

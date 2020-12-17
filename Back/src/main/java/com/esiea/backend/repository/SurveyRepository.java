@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface SurveyRepository extends JpaRepository<Survey, Integer> {
     Survey getSurveyByVoterChoiceAndVoterEventIdAndVoterName(String date, String id, String name);
+    int countByVoterEventIdAndVoterChoice(String id, String date);
 }

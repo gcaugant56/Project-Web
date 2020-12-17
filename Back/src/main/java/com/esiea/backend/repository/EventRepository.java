@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EventRepository extends JpaRepository<Event, Integer> {
-    Event getEventByName(String name);
+    Event getEventById(long id);
     List<Event> findAllByParticipantContainingOrCreatorEquals(String username, String usernames);
 }
