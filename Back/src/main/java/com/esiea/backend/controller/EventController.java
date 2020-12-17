@@ -22,10 +22,16 @@ public class EventController {
     @ResponseBody
     public boolean event(@RequestBody Event event, @RequestHeader Map<String,String> headers)
     {
-        String token = headers.get("authorization");
-        token = token.substring(7);
-        token = TokenUtil.extractUsername(token);
-        return eventService.createEvent(event.getName(),event.getPlace(),event.getDate(),event.getParticipant(),token);
+        if(!event.getDate().equals("") && !event.getName().equals("") && !event.getParticipant().equals("") && !event.getPlace().equals(""))
+        {
+            String token = headers.get("authorization");
+            token = token.substring(7);
+            token = TokenUtil.extractUsername(token);
+            boolean result =  eventService.createEvent(event.getName(),event.getPlace(),event.getDate(),event.getParticipant(),token);
+            System.out.println(result);
+            return result;
+        }
+        return false;
     }
     @GetMapping("/event/all")
     @ResponseBody

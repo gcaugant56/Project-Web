@@ -25,6 +25,7 @@
     </div>
     <br>
     <button v-on:click="createEvent">Valider</button>
+    <p v-if="result === false"> Impossible de créer l'evenement</p>
   </div>
 </template>
 
@@ -40,6 +41,7 @@ export default {
         return {
             inputsParticipant: [ {name: ''}],
             inputsDate: [ {name: ''}],
+            result: '',
 
         }
     },
@@ -80,12 +82,15 @@ export default {
             body: JSON.stringify({ participant : participants, date : dates, place : place, name : name, creator : token }),
             }).then((response) => {
             response.json().then((data) => {
-            if (data == true) {
-                this.mail = email;
-                this.$confirm("votre adresse mail a bien été changée", "changement validé");
+            this.result = data;
+            if(this.result == true)
+            {
+                this.$router.push({ path: "/" });
+
             }
-            });
+         });
         });
+
             
         },
     }
