@@ -1,20 +1,22 @@
 <template>
   <div id="signup">
-    <div class="form-div">
-      <!--formulaire d'inscription-->
-      <div class="title">Sign up</div>
+    <div class="main">
+      <div class="form-div">
+        <!--formulaire d'inscription-->
+        <div class="title">Sign up</div>
 
-      <form action="" class="sign-up-form">
-        <input type="text" id="username" placeholder="userName" />
+        <form action="" class="sign-up-form">
+          <input type="text" id="username" placeholder="userName" />
 
-        <input type="mail" id="mail" placeholder="mail" />
+          <input type="mail" id="mail" placeholder="mail" />
 
-        <input type="text" id="pseudo" placeholder="Pseudo" />
+          <input type="text" id="pseudo" placeholder="Pseudo" />
 
-        <input type="password" id="password" placeholder="password" />
+          <input type="password" id="password" placeholder="password" />
 
-        <button v-on:click="postUser" value="Login" class="btn">Envoyer</button>
-      </form>
+          <button v-on:click="postUser" value="Login" class="btn">Envoyer</button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -89,7 +91,6 @@ export default {
 .title {
   text-align: center;
   padding: 8px;
-  font-size: 14px;
   font-weight: 700;
   border-bottom: 1px solid black;
 }
@@ -105,5 +106,17 @@ export default {
   align-self: flex-end;
   cursor: pointer;
   font-weight: 500;
+}
+
+.signup {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  left: 0%;
+  top: 0%;
 }
 </style>

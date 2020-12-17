@@ -1,22 +1,24 @@
 <template>
-  <div id="homepage">
-    <h1>Home Page</h1>
-    <div v-if="token == null">
+  <div id="homepage" class="body">
+    <div v-if="token == null" class="main">
       <h1>Veuillez vous connecter svp</h1>
     </div>
-    <div v-else>
-      <h1>Bonjour {{ pseudo }}</h1>
-      <h2>UserName : {{ username }}</h2>
-      <h2>Mail : {{ mail }}</h2>
+    <div v-else class="main">
+      <div class="user">
+        <div class="title-user">Bonjour {{ pseudo }}, comment allez-vous aujourd'hui ?</div>
+      </div>
 
-      <h1>Vos évenements</h1>
-      <div class="event" v-for="event in data">
-
-        <div class="evenement" v-on:click="$router.push({ path: '/' + event.id})">
-          <div>
-            <p>Id : {{ event.id }}</p>
-            <p>Nom : {{ event.name }}</p>
-            <p>Participants : {{ event.participant }}</p>
+      <div class="main-events">
+        <div class="titletitle">Vos évenements</div>
+        <div class="events">
+          <div class="event" v-for="event in data">
+            <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
+              <div class="title">{{ event.name }}</div>
+              <div class="event-info">
+                <div class="text">{{event.date}}</div>
+                <div class="text">Participants : {{ event.participant }}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -88,16 +90,86 @@ export default {
 };
 </script>
 <style>
-.event {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
 .evenement {
   cursor: pointer;
 }
 
-.evenement:hover{
-  background-color: rgba(22, 122, 194, 0.2);
+.evenement:hover {
+  background-color: rgba(29, 30, 28, 0.05);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+}
+
+.event {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  min-width: 300px;
+  background-color: #fff;
+  margin: 0.5rem 0.5rem;
+  box-shadow: -0.6rem 0.6rem 0 rgba(29, 30, 28, 0.26);
+}
+
+.events{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  border-bottom: 1px solid black;
+}
+
+.titletitle {
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  border-bottom: 1px solid black;
+  font-size: 1.6rem;
+}
+
+.title-user {
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.event-info{
+  margin: 0.2rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+}
+
+.text{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.body{
+  margin-left: 5%;
+  margin-right: 5%;
 }
 </style>

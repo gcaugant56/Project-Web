@@ -74,7 +74,6 @@ export default {
 .title {
   text-align: center;
   padding: 8px;
-  font-size: 14px;
   font-weight: 700;
   border-bottom: 1px solid black;
 }
