@@ -20,6 +20,10 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueSimpleAlert from "vue-simple-alert";
+Vue.use(VueSimpleAlert);
+
 export default {
   name: "Signup",
   data: () => {
@@ -57,8 +61,10 @@ export default {
         response.json().then((data) => {
           if (data == true){
             console.log("inscription réussie");
+            this.$confirm("inscription réussie ! \n Vous pouvez mainteant vous connecter").then(()=>{this.$router.push({ path: "/signin" });});
           }else{
             console.log("erreur dans l'inscription");
+            this.$alert("erreur de l'inscription. Merci de bien vouloir recommencer");
           }
         });
       });
