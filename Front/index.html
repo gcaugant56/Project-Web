@@ -29,6 +29,10 @@
           <li v-show="$cookies.get('token')" v-on:click="$cookies.remove('token'); $router.push({ path: '/signin'})">
             <a>Se déconnecter</a></li>
 
+            <router-link to="/my-account">
+              <li v-show="$cookies.get('token')"><a>Mon compte</a></li>
+            </router-link>
+
           <router-link to="/plannif">
             <li><a>Plannifier une réunion</a></li>
           </router-link>
@@ -74,7 +78,7 @@
     }
 
     .active {
-      background-color: #4CAF50;
+      background-color: rgb(119, 114, 114);
     }
 
     h1 {
@@ -116,11 +120,9 @@
       background-image: url(./src/assets/img/bg.jpg);
       display: flex;
       align-items: center;
-      
     }
 
-    input,
-    button {
+    input {
       border: 2px solid rgba(0, 0, 0, 0.6);
       background-image: none;
       background-color: #dadad3;

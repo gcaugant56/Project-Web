@@ -1,10 +1,10 @@
 <template>
   <div id="signin">
 
-    <div class="form-div">
+    <div class="form-div-signin">
 
       <!--formulaire de connexion-->
-      <div class="title">Sign in</div>
+      <div class="title-signin">Sign in</div>
 
       <form action="" class="sign-in-form">
 
@@ -12,7 +12,7 @@
 
         <input type="password" id="password-login" placeholder="password" />
 
-        <button v-on:click="login" value="login" class="btn">Envoyer</button>
+        <button v-on:click="login" value="login" class="btn-signin">Envoyer</button>
       </form>
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
 
 <style>
 
-.form-div {
+.form-div-signin {
   border: 1px solid black;
   max-width: 300px;
   background-color: #fff;
@@ -71,7 +71,7 @@ export default {
   margin-top: 50px;
 }
 
-.title {
+.title-signin {
   text-align: center;
   padding: 8px;
   font-weight: 700;
@@ -84,10 +84,18 @@ export default {
   flex-direction: column;
 }
 
-.btn{
+.btn-signin{
   margin-top: 10px;
   align-self: flex-end;
   cursor: pointer;
   font-weight: 500;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  background-image: none;
+  background-color: #dadad3;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 5px;
+  margin-top: 10px;
 }
 </style>

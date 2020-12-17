@@ -6,11 +6,12 @@ import router from './router'
 import Home from './components/Home'
 import Signup from './components/Signup'
 import Signin from './components/Signin'
+import Account from './components/Account'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { Home, Signup, Signin },
+  components: { Home, Signup, Signin, Account },
 })
