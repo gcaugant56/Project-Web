@@ -23,6 +23,7 @@ public class EventService {
     }
     public boolean createEvent(String name, String place, String date, String participant,String creator)
     {
+
         Event event = new Event();
         event.setDate(date);
         event.setName(name);
