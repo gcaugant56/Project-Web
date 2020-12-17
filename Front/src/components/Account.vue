@@ -73,7 +73,19 @@ export default {
       }
     },
     changePassword(pswd) {
-      
+      console.log(pswd);
+      fetch("http://localhost:8085/user/password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.token,
+        },
+        body: JSON.stringify({ password: pswd}),
+      }).then((response) => {
+        response.json().then((data) => {
+          console.log(data);
+        });
+      });
     }
   },
   mounted() {
