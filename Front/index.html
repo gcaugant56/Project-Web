@@ -29,6 +29,10 @@
           <li v-show="$cookies.get('token')" v-on:click="$cookies.remove('token'); $router.push({ path: '/signin'})">
             <a>Se déconnecter</a></li>
 
+            <router-link to="/my-account">
+              <li v-show="$cookies.get('token')"><a>Mon compte</a></li>
+            </router-link>
+
           <router-link to="/plannif">
             <li><a>Plannifier une réunion</a></li>
           </router-link>
