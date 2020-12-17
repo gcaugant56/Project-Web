@@ -29,6 +29,10 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueCookies from "vue-cookies";
+Vue.use(require("vue-cookies"));
+Vue.use(VueCookies);
 
 export default {
     name: 'Planif',
@@ -61,11 +65,27 @@ export default {
             var dates = '';
             var place = document.getElementById("place").value;
             var name = document.getElementById("eventName").value;
+            var token = $cookies.get("token");
             this.inputsParticipant.forEach(participant => participants = participants + participant.name+',');
             participants = participants.slice(0,-1);
             this.inputsDate.forEach(date => dates = dates + date.name+',');
             dates = dates.slice(0,-1);
             
+            fetch("http://localhost:8085/event/create", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+            },
+            body: JSON.stringify({ participant : participants, date : dates, place : place, name : name, creator : token }),
+            }).then((response) => {
+            response.json().then((data) => {
+            if (data == true) {
+                this.mail = email;
+                this.$confirm("votre adresse mail a bien été changée", "changement validé");
+            }
+            });
+        });
             
         },
     }

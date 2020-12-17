@@ -3,6 +3,7 @@ package com.esiea.backend.services;
 import com.esiea.backend.Event;
 import com.esiea.backend.Survey;
 import com.esiea.backend.repository.SurveyRepository;
+import com.esiea.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,18 @@ public class SurveyService {
     @Autowired
     EventService eventService;
 
-    public boolean createSurvey(Survey survey){
+    @Autowired
+    private JwtUtil TokenUtil;
+
+    public boolean createSurvey(Survey survey, String token){
+
+        token = token.substring(7);
+        token = TokenUtil.extractUsername(token);
+
+        Survey newSurvey = new Survey();
+        newSurvey.setVoterChoice(survey.getVoterChoice());
+        newSurvey.setVoterEventId(survey.getVoterEventId());
+        newSurvey.setVoterName(token);
         Survey getDate = surveyRepository.getSurveyByVoterChoiceAndVoterEventIdAndVoterName(survey.getVoterChoice(), survey.getVoterEventId(), survey.getVoterName());
         if (getDate != null){
            String[] dates = getDate.getVoterChoice().split(",");
@@ -31,7 +43,7 @@ public class SurveyService {
         }
 
         if (getDate == null) {
-            surveyRepository.save(survey);
+            surveyRepository.save(newSurvey);
             return true;
         }
         return false;

@@ -16,14 +16,15 @@ public class SurveyController {
     SurveyService surveyService;
 
     @PostMapping("/survey/create")
-    public boolean createSurvey(@RequestBody Survey survey){
-        return surveyService.createSurvey(survey);
+    public boolean createSurvey(@RequestBody Survey survey, @RequestHeader Map<String,String> headers){
+        String token = headers.get("authorization");
+        System.out.println(token);
+        return surveyService.createSurvey(survey,token);
     }
 
     @GetMapping("/survey/count")
     public Map<String,Integer> getCountVote(@RequestHeader Map<String,String> id){
         Map<String,Integer> result = new HashMap<String, Integer>();
-        System.out.println(id.get("id"));
         result = surveyService.getCount(id.get("id"));
         return result;
     }
