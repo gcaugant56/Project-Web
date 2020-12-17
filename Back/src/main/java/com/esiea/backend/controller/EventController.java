@@ -27,4 +27,10 @@ public class EventController {
         String username = eventService.getUsernameFromToken(headers.get("authorization"));
         return eventService.getEventForUser(username,username);
     }
+    @PostMapping("/event/delete")
+    @ResponseBody
+    public boolean deleteEvent(Event event)
+    {
+        return eventService.deleteEvent(event);
+    }
 }

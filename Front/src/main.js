@@ -1,37 +1,17 @@
-import {Renderer as Vue} from "@vue/runtime-core";
-import VueRouter from "vue-router";
+/* eslint-disable */ 
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import router from './router'
+import Home from './components/Home'
+import Signup from './components/Signup'
+import Signin from './components/Signin'
+import Account from './components/Account'
+Vue.config.productionTip = false
 
-
-const Home = {
-    template: '<h1>HOME</h1>',
-    name: 'Home'
-};
-const Login = {
-    template: '<h1>inscrire</h1>',
-    name: "Login"
-};
-const Connect = {
-    template: '<h1>Se connecter</h1>',
-    name: 'Connect'
-};
-const Planif = {
-    template: '<h1>Plannifier une réunion</h1>',
-    name: 'Planif'
-};
-
-
-//router
-const router = new VueRouter({
-    routes: [
-        { path: '/', component: Home },
-        { path: '/login', component: Login },
-        { path: '/connect', component: Connect },
-        { path: '/plannif', component: Planif },
-    ]
-});
-
-
-Vue.createApp ({
-    router
-}).mount('#app');
-
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { Home, Signup, Signin, Account },
+})
