@@ -83,7 +83,10 @@ export default {
         body: JSON.stringify({ password: pswd}),
       }).then((response) => {
         response.json().then((data) => {
-          console.log(data);
+          if (data == true){
+            $cookies.remove('token');
+            this.$router.push({ path: '/signin'})
+          }
         });
       });
     }
