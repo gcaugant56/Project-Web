@@ -4,34 +4,58 @@
       <div class="title-account">Mon compte</div>
       <div class="user-account">
         <div class="ligne-account">
-          <div class="text">ID : </div>
-          <div class="text">{{id}}</div>
+          <div class="text">ID :</div>
+          <div class="text">{{ id }}</div>
         </div>
         <div class="ligne-account">
-          <div class="text">Username : </div>
-          <div class="text">{{username}}</div>
+          <div class="text">Username :</div>
+          <div class="text">{{ username }}</div>
         </div>
         <div class="ligne-account">
-          <div class="text">Pseudo : </div>
-          <div class="text">{{pseudo}}</div>
+          <div class="text">Pseudo :</div>
+          <div class="text">{{ pseudo }}</div>
         </div>
         <div class="ligne-account">
-          <div class="text">Password : </div>
-          <div class="text"> **************</div>
-          <button id="pswd" v-on:click="$prompt('Entrez votre nouveau mot de passe : ', '', 'changment de mot de passe', 'question').then((text) => {
-            changePassword(text);
-            })" class="btn-account">Modifier</button>
+          <div class="text">Password :</div>
+          <div class="text">**************</div>
+          <button
+            id="pswd"
+            v-on:click="
+              $prompt(
+                'Entrez votre nouveau mot de passe : ',
+                '',
+                'changment de mot de passe',
+                'question'
+              ).then((text) => {
+                changePassword(text);
+              })
+            "
+            class="btn-account"
+          >
+            Modifier
+          </button>
         </div>
         <div class="ligne-account">
-          <div class="text">Mail : </div>
-          <div class="text">{{mail}}</div>
-          <button v-on:click="document.alert('Hello Vue Simple Alert.')" class="btn-account">Modifier</button>
+          <div class="text">Mail :</div>
+          <div class="text">{{ mail }}</div>
+          <button
+            v-on:click="
+              $prompt(
+                'Entrez votre nouvelle adresse mail : ',
+                '',
+                'changment de mail',
+                'question'
+              ).then((text) => {
+                changeMail(text);
+              })
+            "
+            class="btn-account"
+          >
+            Modifier
+          </button>
         </div>
-        
-
       </div>
     </div>
-
   </div>
 </template>
 
@@ -80,26 +104,45 @@ export default {
           "Content-Type": "application/json",
           Authorization: "Bearer " + this.token,
         },
-        body: JSON.stringify({ password: pswd}),
+        body: JSON.stringify({ password: pswd }),
       }).then((response) => {
         response.json().then((data) => {
-          if (data == true){
-            $cookies.remove('token');
-            this.$router.push({ path: '/signin'})
+          if (data == true) {
+            $cookies.remove("token");
+            this.$router.push({ path: "/signin" });
           }
         });
       });
-    }
+    },
+    changeMail(email) {
+      console.log(email);
+      fetch("http://localhost:8085/user/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.token,
+        },
+        body: JSON.stringify({ email: email }),
+      }).then((response) => {
+        response.json().then((data) => {
+          if (data == true) {
+            this.mail = email;
+            this.$confirm("votre adresse mail a bien été changée", "changement validé");
+          }
+        });
+      });
+    },
   },
+
   mounted() {
     this.token = $cookies.get("token");
     this.getUser();
-  }
+  },
 };
 </script>
 
 <style>
-.main-account{
+.main-account {
   display: flex;
   align-items: center;
   border: 1px solid black;
@@ -116,20 +159,19 @@ export default {
   padding: 8px;
   font-weight: 700;
   border-bottom: 1px solid black;
-   
 }
 
-.container-account{
+.container-account {
   width: 400px;
 }
 
-.user-account{
+.user-account {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
 }
 
-.ligne-account{
+.ligne-account {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -137,7 +179,7 @@ export default {
   height: 40px;
 }
 
-.btn-account{
+.btn-account {
   display: flex;
   justify-content: flex-end;
   border: 2px solid rgba(0, 0, 0, 0.6);
@@ -151,7 +193,5 @@ export default {
   margin-bottom: 0px;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-
 }
-
 </style>
