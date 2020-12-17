@@ -15,7 +15,8 @@
             <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
               <div class="title">{{ event.name }}</div>
               <div class="event-info">
-                <div class="text">{{event.date}}</div>
+                <div class="text">lieu : {{event.place}}</div>
+                <div class="text">date : {{event.date}}</div>
                 <div class="text">Participants : {{ event.participant }}</div>
               </div>
             </div>
@@ -30,7 +31,8 @@
             <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
               <div class="title">{{ event.name }}</div>
               <div class="event-info">
-                <div class="text">{{event.date}}</div>
+                <div class="text">lieu : {{event.place}}</div>
+                <div class="text">date : {{event.date}}</div>
                 <div class="text">Participants : {{ event.participant }}</div>
               </div>
             </div>
@@ -147,6 +149,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .title {
