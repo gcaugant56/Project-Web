@@ -10,13 +10,13 @@
 
   <link rel="icon" href="./assets/img/vueLogo.png" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
-  <link href="/src/assets/style/style.css" rel="stylesheet" />
+
 </head>
 
 <body>
-  <div id="app">
+  <div id="app" class="app">
     <!--BARRE DE NAVIGATION-->
-    <nav>
+    <nav class="navbar">
       <div class="nav-container">
         <ul>
           <router-link to="/signup">
@@ -26,8 +26,9 @@
             <li v-show="!$cookies.get('token')"><a>Se connecter</a></li>
           </router-link>
 
-          <li v-show="$cookies.get('token')" v-on:click="$cookies.remove('token'); $router.push({ path: '/signin'})"><a>Se déconnecter</a></li>
-      
+          <li v-show="$cookies.get('token')" v-on:click="$cookies.remove('token'); $router.push({ path: '/signin'})">
+            <a>Se déconnecter</a></li>
+
           <router-link to="/plannif">
             <li><a>Plannifier une réunion</a></li>
           </router-link>
@@ -78,6 +79,14 @@
 
     h1 {
       text-align: center;
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+
+    h2{
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 0.3rem;
     }
 
     .form {
@@ -85,7 +94,7 @@
     }
 
     * {
-      box-sizing: border-box;
+      
     }
 
     .form {
@@ -94,16 +103,37 @@
     }
 
 
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-
     * {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+    }
+
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      background-image: url(./src/assets/img/bg.jpg);
+      display: flex;
+      align-items: center;
+      
     }
 
-    body,
-    input {
-      font-family: "Poppins", sans-serif;
+    input,
+    button {
+      border: 2px solid rgba(0, 0, 0, 0.6);
+      background-image: none;
+      background-color: #dadad3;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      padding: 5px;
+      margin-top: 10px;
     }
+
+    .app{
+      width: 100%;
+      height: 100%;
+    }
+
   </style>

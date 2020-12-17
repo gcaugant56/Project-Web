@@ -1,32 +1,22 @@
 <template>
-
   <div id="signup">
-    <div class="signin-signup">
+    <div class="main">
+      <div class="form-div">
+        <!--formulaire d'inscription-->
+        <div class="title">Sign up</div>
 
-      <!--formulaire d'inscription-->
-      <form action="" class="sign-up-form">
-        <h2 class="title">Sign up</h2>
-        <div class="input-field">
-          <i class="fas fa-user"></i>
+        <form action="" class="sign-up-form">
           <input type="text" id="username" placeholder="userName" />
-        </div>
-        <div class="input-field">
-          <i class="fas fa-at"></i>
-          <input type="mail" id="mail" placeholder="mail" />
-        </div>
-        <div class="input-field">
-          <i class="fas fa-user-tag"></i>
-          <input type="text" id="pseudo" placeholder="Pseudo" />
-        </div>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="password" placeholder="password" />
-        </div>
-        <button v-on:click="postUser" value="Login" class="btn solid">
-          Envoyer
-        </button>
-      </form>
 
+          <input type="mail" id="mail" placeholder="mail" />
+
+          <input type="text" id="pseudo" placeholder="Pseudo" />
+
+          <input type="password" id="password" placeholder="password" />
+
+          <button v-on:click="postUser" value="Login" class="btn">Envoyer</button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +32,7 @@ export default {
     return {};
   },
   methods: {
-    postUser: async () => {
+    postUser() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
       var pseudo = document.getElementById("pseudo").value;
@@ -58,34 +48,75 @@ export default {
           mail
       );
 
-      const rawResponse = await fetch(
-        "http://localhost:8085/user/registration",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: username,
-            password: password,
-            name: pseudo,
-            email: mail,
-          }),
-        }
-      );
-      const content = await rawResponse.json();
-      console.log("réponse de la requete de création d'un utilisateur : ")
-      console.log(content);
-      if (content == true){
-        console.log("Votre compte à bien été créé. Vous pouvez maintenant vous connecter avec vos identifiants");
-      }else{
-        console.log("Erreur dans la création de votre compte, veuillez réessayer s'il vous plaît");
-      }
+      fetch("http://localhost:8085/user/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          name: pseudo,
+          email: mail,
+        }),
+      }).then((response) => {
+        response.json().then((data) => {
+          if (data == true){
+            console.log("inscription réussie");
+            this.$confirm("inscription réussie ! \n Vous pouvez mainteant vous connecter").then(()=>{this.$router.push({ path: "/signin" });});
+          }else{
+            console.log("erreur dans l'inscription");
+            this.$alert("erreur de l'inscription. Merci de bien vouloir recommencer");
+          }
+        });
+      });
     },
   },
 };
 </script>
 
 <style>
+.form-div {
+  border: 1px solid black;
+  max-width: 300px;
+  background-color: #fff;
+  margin: 0 auto;
+  box-shadow: -0.6rem 0.6rem 0 rgba(29, 30, 28, 0.26);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
 
+.title {
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  border-bottom: 1px solid black;
+}
+
+.sign-up-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin-top: 10px;
+  align-self: flex-end;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.signup {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  left: 0%;
+  top: 0%;
+}
 </style>
