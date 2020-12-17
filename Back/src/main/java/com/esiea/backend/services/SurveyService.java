@@ -33,7 +33,7 @@ public class SurveyService {
         newSurvey.setVoterChoice(survey.getVoterChoice());
         newSurvey.setVoterEventId(survey.getVoterEventId());
         newSurvey.setVoterName(token);
-        Survey getDate = surveyRepository.getSurveyByVoterChoiceAndVoterEventIdAndVoterName(survey.getVoterChoice(), survey.getVoterEventId(), survey.getVoterName());
+        Survey getDate = surveyRepository.getSurveyByVoterChoiceAndVoterEventIdAndVoterName(newSurvey.getVoterChoice(), newSurvey.getVoterEventId(), newSurvey.getVoterName());
         if (getDate != null){
            String[] dates = getDate.getVoterChoice().split(",");
             for (String date:dates) {
@@ -41,6 +41,7 @@ public class SurveyService {
                     return false;
                 }
             }
+
         }
 
         if (getDate == null) {
@@ -59,9 +60,17 @@ public class SurveyService {
         List<Vote> votes = new ArrayList<>();
         for (String date:dates)
         {
-            int count = surveyRepository.countByVoterEventIdAndVoterChoice(id,date);
-            Vote vote = new Vote(date,id);
-            votes.add(vote);
+            System.out.println(id);
+            System.out.println(date);
+            System.out.println(surveyRepository.findAllByVoterEventIdContainingAndVoterChoiceContaining(id,date));
+            int count = surveyRepository.findAllByVoterEventIdContainingAndVoterChoiceContaining(id,date).size();
+            if(count > 0)
+            {
+                String strcount = String.valueOf(count);
+                Vote vote = new Vote(date,strcount);
+                votes.add(vote);
+            }
+
 
         }
         return votes;
