@@ -1,18 +1,18 @@
 <template>
   <div id="signin">
-    <div class="form-div">
-      <!--formulaire de connexion-->
 
+    <div class="form-div">
+
+      <!--formulaire de connexion-->
       <div class="title">Sign in</div>
+
       <form action="" class="sign-in-form">
 
         <input type="text" id="username-login" placeholder="userName" />
 
         <input type="password" id="password-login" placeholder="password" />
 
-        <button v-on:click="login" value="login" class="btn">
-          Envoyer
-        </button>
+        <button v-on:click="login" value="login" class="btn">Envoyer</button>
       </form>
     </div>
   </div>
