@@ -1,9 +1,9 @@
 <template>
   <div id="signup">
-    <div class="main">
-      <div class="form-div">
+    <div class="main-signup">
+      <div class="form-div-signup">
         <!--formulaire d'inscription-->
-        <div class="title">Sign up</div>
+        <div class="title-signup">Sign up</div>
 
         <form action="" class="sign-up-form">
           <input type="text" id="username" placeholder="userName" />
@@ -14,7 +14,7 @@
 
           <input type="password" id="password" placeholder="password" />
 
-          <button v-on:click="postUser" value="Login" class="btn">Envoyer</button>
+          <button v-on:click="postUser" value="Login" class="btn-signup">Envoyer</button>
         </form>
       </div>
     </div>
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style>
-.form-div {
+.form-div-signup {
   border: 1px solid black;
   max-width: 300px;
   background-color: #fff;
@@ -88,7 +88,7 @@ export default {
   margin-top: 50px;
 }
 
-.title {
+.title-signup {
   text-align: center;
   padding: 8px;
   font-weight: 700;
@@ -101,11 +101,19 @@ export default {
   flex-direction: column;
 }
 
-.btn {
+.btn-signup {
   margin-top: 10px;
   align-self: flex-end;
   cursor: pointer;
   font-weight: 500;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  background-image: none;
+  background-color: #dadad3;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .signup {
@@ -115,7 +123,7 @@ export default {
   height: 100%;
 }
 
-.main {
+.main-signup {
   left: 0%;
   top: 0%;
 }
