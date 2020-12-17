@@ -1,13 +1,10 @@
 <template>
   <div id="signup">
-
     <div class="form-div">
-
       <!--formulaire d'inscription-->
       <div class="title">Sign up</div>
 
       <form action="" class="sign-up-form">
-
         <input type="text" id="username" placeholder="userName" />
 
         <input type="mail" id="mail" placeholder="mail" />
@@ -17,24 +14,19 @@
         <input type="password" id="password" placeholder="password" />
 
         <button v-on:click="postUser" value="Login" class="btn">Envoyer</button>
-
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import VueSimpleAlert from "vue-simple-alert";
-Vue.use(VueSimpleAlert);
-
 export default {
   name: "Signup",
   data: () => {
     return {};
   },
   methods: {
-    postUser: async () => {
+    postUser() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
       var pseudo = document.getElementById("pseudo").value;
@@ -50,40 +42,32 @@ export default {
           mail
       );
 
-      const rawResponse = await fetch(
-        "http://localhost:8085/user/registration",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: username,
-            password: password,
-            name: pseudo,
-            email: mail,
-          }),
-        }
-      );
-      const content = await rawResponse.json();
-      console.log("réponse de la requete de création d'un utilisateur : ");
-      console.log(content);
-      if (content == true) {
-        console.log(
-          "Votre compte à bien été créé. Vous pouvez maintenant vous connecter avec vos identifiants"
-        );
-      } else {
-        console.log(
-          "Erreur dans la création de votre compte, veuillez réessayer s'il vous plaît"
-        );
-      }
+      fetch("http://localhost:8085/user/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          name: pseudo,
+          email: mail,
+        }),
+      }).then((response) => {
+        response.json().then((data) => {
+          if (data == true){
+            console.log("inscription réussie");
+          }else{
+            console.log("erreur dans l'inscription");
+          }
+        });
+      });
     },
   },
 };
 </script>
 
 <style>
-
 .form-div {
   border: 1px solid black;
   max-width: 300px;
@@ -104,13 +88,13 @@ export default {
   border-bottom: 1px solid black;
 }
 
-.sign-up-form{
+.sign-up-form {
   padding: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.btn{
+.btn {
   margin-top: 10px;
   align-self: flex-end;
   cursor: pointer;
