@@ -11,7 +11,7 @@
       <div class="main-events">
         <div class="titletitle">Vos évenements</div>
         <div class="events">
-          <div class="event" v-for="event in data">
+          <div class="event" v-for="event in data" v-if="event.creator == username">
             <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
               <div class="title">{{ event.name }}</div>
               <div class="event-info">
@@ -22,6 +22,22 @@
           </div>
         </div>
       </div>
+
+      <div class="main-events">
+        <div class="titletitle">Les évenements auxquels vous êtes invités</div>
+        <div class="events">
+          <div class="event" v-for="event in data" v-if="event.creator != username">
+            <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
+              <div class="title">{{ event.name }}</div>
+              <div class="event-info">
+                <div class="text">{{event.date}}</div>
+                <div class="text">Participants : {{ event.participant }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
