@@ -8,20 +8,50 @@
         <div class="title-user">Bonjour {{ pseudo }}, comment allez-vous aujourd'hui ?</div>
       </div>
 
-      <div class="main-events">
+      <div class="main-events" v-if="this.data[1]">
         <div class="titletitle">Vos évenements</div>
         <div class="events">
-          <div class="event" v-for="event in data">
+          <div class="event" v-for="event in data" v-if="event.creator == username">
             <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
               <div class="title">{{ event.name }}</div>
               <div class="event-info">
-                <div class="text">{{event.date}}</div>
+                <div class="text">lieu : {{event.place}}</div>
+                <div class="text">date : {{event.date}}</div>
                 <div class="text">Participants : {{ event.participant }}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="main-events" v-if="this.data[1]">
+        <div class="titletitle">Les évenements auxquels vous êtes invités</div>
+        <div class="events">
+          <div class="event" v-for="event in data" v-if="event.creator != username">
+            <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
+              <div class="title">{{ event.name }}</div>
+              <div class="event-info">
+                <div class="text">lieu : {{event.place}}</div>
+                <div class="text">date : {{event.date}}</div>
+                <div class="text">Participants : {{ event.participant }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-events" v-else>
+        <div class="titletitle">Vos évenements</div>
+        <div class="events">
+          <div class="event">
+            <div class="evenement" v-on:click="$router.push({ path: '/plannif'})">
+              <div class="title">Désolé, vous n'avez pas encore d'évenements. <br> clic sur ce cadre pour aller en créer un dès maintenant !</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -131,6 +161,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .title {
