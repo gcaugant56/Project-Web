@@ -1,35 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>Projet Web - Home page</title>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+  <title>Projet Web - Home page</title>
 
-    <link rel="icon" href="./assets/img/vueLogo.png" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
-    <link href="/src/assets/style/style.css" rel="stylesheet"/>
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <body>
-    <div id="app">
-      <!--BARRE DE NAVIGATION-->
-      <nav>
-        <div class="nav-container">
-          <ul>
-            <router-link to="/signup">
-            <li><a>Se connecter / s'incrire</a></li>
+  <link rel="icon" href="./assets/img/vueLogo.png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+
+</head>
+
+<body>
+  <div id="app" class="app">
+    <!--BARRE DE NAVIGATION-->
+    <nav class="navbar">
+      <div class="nav-container">
+        <ul>
+          <router-link to="/signup">
+            <li v-show="!$cookies.get('token')"><a>S'inscrire</a></li>
+          </router-link>
+          <router-link to="/signin">
+            <li v-show="!$cookies.get('token')"><a>Se connecter</a></li>
+          </router-link>
+
+          <li v-show="$cookies.get('token')" v-on:click="$cookies.remove('token'); $router.push({ path: '/signin'})">
+            <a>Se déconnecter</a></li>
+
+            <router-link to="/my-account">
+              <li v-show="$cookies.get('token')"><a>Mon compte</a></li>
             </router-link>
-            <router-link to="/plannif">
+
+          <router-link to="/plannif">
             <li><a>Plannifier une réunion</a></li>
-            </router-link>
-            <router-link to="/">
+          </router-link>
+          <router-link to="/">
             <li style="float: left"><a class="active">Home</a></li>
-            </router-link>
-          </ul>
-        </div>
-      </nav>
-      <router-view></router-view>
-    </div>
-    
+          </router-link>
+        </ul>
+      </div>
+    </nav>
+    <router-view></router-view>
+  </div>
+
+
+
+
+
+
+  <!-- STYLES CSS POUR MENU DE NAVIGATION ET LES STYLES GLOBAUX-->
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      display: inline;
+      float: right;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: rgb(119, 114, 114);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+
+    h2{
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 0.3rem;
+    }
+
+    .form {
+      padding: 30px 40px;
+    }
+
+    * {
+      
+    }
+
+    .form {
+      align-items: unset;
+      justify-content: center;
+    }
+
+
+    * {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-image: url(./src/assets/img/bg.jpg);
+      display: flex;
+      align-items: center;
+    }
+
+    input {
+      border: 2px solid rgba(0, 0, 0, 0.6);
+      background-image: none;
+      background-color: #dadad3;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      padding: 5px;
+      margin-top: 10px;
+    }
+
+    .app{
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>

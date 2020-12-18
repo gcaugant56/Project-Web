@@ -2,6 +2,7 @@ package com.esiea.backend.controller;
 
 import com.esiea.backend.Event;
 import com.esiea.backend.services.EventService;
+import com.esiea.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +15,23 @@ public class EventController {
     @Autowired
     EventService eventService;
 
+    @Autowired
+    private JwtUtil TokenUtil;
+
     @PostMapping("/event/create")
     @ResponseBody
-    public boolean event(@RequestBody Event event)
+    public boolean event(@RequestBody Event event, @RequestHeader Map<String,String> headers)
     {
-        return eventService.createEvent(event.getName(),event.getPlace(),event.getDate(),event.getParticipant(),event.getCreator());
+        if(!event.getDate().equals("") && !event.getName().equals("") && !event.getParticipant().equals("") && !event.getPlace().equals(""))
+        {
+            String token = headers.get("authorization");
+            token = token.substring(7);
+            token = TokenUtil.extractUsername(token);
+            boolean result =  eventService.createEvent(event.getName(),event.getPlace(),event.getDate(),event.getParticipant(),token);
+            System.out.println(result);
+            return result;
+        }
+        return false;
     }
     @GetMapping("/event/all")
     @ResponseBody
@@ -33,4 +46,6 @@ public class EventController {
     {
         return eventService.deleteEvent(event);
     }
+
+
 }
