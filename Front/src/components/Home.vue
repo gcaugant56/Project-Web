@@ -8,7 +8,7 @@
         <div class="title-user">Bonjour {{ pseudo }}, comment allez-vous aujourd'hui ?</div>
       </div>
 
-      <div class="main-events" v-if="this.data[1]">
+      <div class="main-events" v-if="this.data[0]">
         <div class="titletitle">Vos évenements</div>
         <div class="events">
           <div class="event" v-for="event in data" v-if="event.creator == username">
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="main-events" v-if="this.data[1]">
+      <div class="main-events" v-if="this.data[0]">
         <div class="titletitle">Les évenements auxquels vous êtes invités</div>
         <div class="events">
           <div class="event" v-for="event in data" v-if="event.creator != username">
