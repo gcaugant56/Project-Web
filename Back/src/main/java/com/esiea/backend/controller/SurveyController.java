@@ -26,10 +26,12 @@ public class SurveyController {
         return surveyService.createSurvey(survey,token);
     }
 
-    @GetMapping("/survey/count")
-    public List<Vote> getCountVote(@RequestHeader Map<String,String> id){
+    @PostMapping("/survey/count")
+    public List<Vote> getCountVote(@RequestBody Map<String,String> body){
         List<Vote> votes = new ArrayList<>();
-        votes= surveyService.getCount(id.get("id"));
+        System.out.println("id == " +body.get("id"));
+        votes= surveyService.getCount(body.get("id"));
+
         return votes;
     }
 }

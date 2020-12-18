@@ -6,6 +6,8 @@
         <p> Veuillez choisir votre date : </p>
         <button   v-for="dates in date" v-on:click="vote" name=dates> {{ dates }}</button>
         <p v-if="result === false"> Vous avez deja choisie cette option veuillez en choisir une autre</p>
+        <p>Recapitulatif des votes :</p>
+        <p  v-for="cou in count"> {{cou.date}} ---> {{cou.count}}</p>
     </div>
 </template>
 
@@ -23,7 +25,8 @@ export default {
     return {
         event : store.state.event,
         date: store.state.event.date.split(","),
-        result: ''
+        result: '',
+        count:''
     };
     
   },
@@ -41,8 +44,24 @@ export default {
             this.result = data;
          });
         });
-
-      }
+      },
+        counter(){
+          fetch("http://localhost:8085/survey/count", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + $cookies.get("token"),
+            },
+            body: JSON.stringify({id: this.event.id}),
+            }).then((response) => {
+            response.json().then((data) => {
+            this.count = data;
+         });
+        });
+      },
+    },
+   mounted(){
+      this.counter();
   }
 }
 </script>

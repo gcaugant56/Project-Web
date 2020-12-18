@@ -28,7 +28,7 @@ public class SurveyService {
 
         token = token.substring(7);
         token = TokenUtil.extractUsername(token);
-
+        System.out.println(survey);
         Survey newSurvey = new Survey();
         newSurvey.setVoterChoice(survey.getVoterChoice());
         newSurvey.setVoterEventId(survey.getVoterEventId());
@@ -55,6 +55,7 @@ public class SurveyService {
 
     public List<Vote> getCount(String id)
     {
+        System.out.println(id);
         Map<String, Integer> result = new HashMap<String, Integer>();
         Event event = eventService.getEventbyId(Long.parseLong(id));
         System.out.println(event);
@@ -62,7 +63,9 @@ public class SurveyService {
         List<Vote> votes = new ArrayList<>();
         for (String date:dates)
         {
-            int count = surveyRepository.findAllByVoterEventIdEqualsAndVoterChoiceEquals(id,date).size();
+            System.out.println(date);
+            int count = surveyRepository.findAllByVoterEventIdEqualsAndVoterChoiceContaining(id,date).size();
+            System.out.println(count);
             if(count > 0)
             {
                 String strcount = String.valueOf(count);
