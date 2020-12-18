@@ -1,10 +1,10 @@
 # Project-Web
 
-### **I. Prérequis**
+## **I. Prérequis**
 
 Créer une base de données.
 
-### **II. Execution du projet - Côté Backend**
+## **II. Execution du projet - Côté Backend**
 
 Sur l'IDE IntelliJ Idea :
 
@@ -16,7 +16,7 @@ Sur l'IDE IntelliJ Idea :
 
 - Executer Backend avec spring-boot:run
 
-### III.  Execution du projet - Côté Frontend
+## **III. Execution du projet - Côté Frontend**
 
 Sur l'IDE IntelliJ Idea ou Visual Studio Code : 
 
@@ -26,6 +26,26 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 
 - Toujours dans le terminal, taper : "npm run dev"
 
-### Stack technique
+## **IV Vidéo de présentation du site**
 
-![github-small]
+(clic on image)
+<a href="https://www.youtube.com/watch?v=9NvWDNUx6T8&feature=youtu.be"><img src="Front/assets/img/youtube.png"></a>
+
+## **V. Présentation de l'interface du site web**
+
+#### **1. Page de connexion**
+![github-small](images/Login_Signup_Page.png)
+
+#### **2. Homepage**
+![github-small](images/Homepage.png)
+
+## V. **Fonctionnalités disponibles**
+
+#### **Plannification d'événements** :
+Les participants ajoutés à l'événement ci-dessous verront l'événement sur leur Homepage une fois connecté à leur compte.
+![github-small](images/Plannification.png)
+
+
+## VII. **Stack technique**
+
+![github-small](images/Stack.png)
