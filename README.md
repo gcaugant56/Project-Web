@@ -41,14 +41,14 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 
 ## **VI. Fonctionnalités disponibles**
 
-#### **Plannification d'événements** :
+#### **1. Plannification d'événements** :
 Les participants ajoutés à l'événement ci-dessous verront l'événement sur leur Homepage une fois connecté à leur compte.
 ![github-small](images/Plannification.png)
 
-#### **Changement de mot de passe** :
+#### **2. Changement de mot de passe** :
 ![github-small](images/ChangePassword.png)
 
-#### **Changement d'adresse mail** :
+#### **3. Changement d'adresse mail** :
 ![github-small](images/ChangeMail.png)
 
 ## **VII. Stack technique**
