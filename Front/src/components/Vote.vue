@@ -42,6 +42,7 @@ export default {
             }).then((response) => {
             response.json().then((data) => {
             this.result = data;
+            this.counter();
          });
         });
       },
