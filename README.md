@@ -26,6 +26,10 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 
 - Toujours dans le terminal, taper : "npm run dev"
 
+### Présentation du site web
+
+
+
 ### Stack technique
 
 ![github-small](images/stack.png)
