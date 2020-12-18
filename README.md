@@ -27,7 +27,7 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 - Toujours dans le terminal, taper : "npm run dev"
 
 ## **IV Vidéo de présentation du site**
-[![Everything Is AWESOME](Front/assets/img/youtube.png)]
+![Everything Is AWESOME](Front/assets/img/youtube.png)
 (https://www.youtube.com/watch?v=9NvWDNUx6T8&feature=youtu.be "vidéo de présentation")
 
 ## **V. Présentation de l'interface du site web**
