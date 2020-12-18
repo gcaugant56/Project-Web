@@ -9,7 +9,7 @@
       </div>
 
       <div class="main-events" v-if="this.data[1]">
-        <div class="titletitle">Vos évenements</div>
+        <div class="titletitle">Vos événements</div>
         <div class="events">
           <div class="event" v-for="event in data" v-if="event.creator == username">
             <div class="evenement" v-on:click="store.state.event = event,$router.push({ path: '/vote'})">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="main-events" v-if="this.data[1]">
-        <div class="titletitle">Les évenements auxquels vous êtes invités</div>
+        <div class="titletitle">Les événements auxquels vous êtes invité</div>
         <div class="events">
           <div class="event" v-for="event in data" v-if="event.creator != username">
             <div class="evenement" v-on:click="store.state.event = event,$router.push({ path: '/vote'})">

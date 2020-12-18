@@ -24,7 +24,7 @@
               $prompt(
                 'Entrez votre nouveau mot de passe : ',
                 '',
-                'changment de mot de passe',
+                'Changement de mot de passe',
                 'question'
               ).then((text) => {
                 changePassword(text);
@@ -43,7 +43,7 @@
               $prompt(
                 'Entrez votre nouvelle adresse mail : ',
                 '',
-                'changment de mail',
+                'Changement de d'adresse mail',
                 'question'
               ).then((text) => {
                 changeMail(text);
