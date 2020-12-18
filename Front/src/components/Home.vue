@@ -12,7 +12,7 @@
         <div class="titletitle">Vos évenements</div>
         <div class="events">
           <div class="event" v-for="event in data" v-if="event.creator == username">
-            <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
+            <div class="evenement" v-on:click="store.state.event = event,$router.push({ path: '/vote'})">
               <div class="title">{{ event.name }}</div>
               <div class="event-info">
                 <div class="text">lieu : {{event.place}}</div>
@@ -28,7 +28,7 @@
         <div class="titletitle">Les évenements auxquels vous êtes invités</div>
         <div class="events">
           <div class="event" v-for="event in data" v-if="event.creator != username">
-            <div class="evenement" v-on:click="$router.push({ path: '/' + event.id })">
+            <div class="evenement" v-on:click="store.state.event = event,$router.push({ path: '/vote'})">
               <div class="title">{{ event.name }}</div>
               <div class="event-info">
                 <div class="text">lieu : {{event.place}}</div>
@@ -59,6 +59,7 @@
 <script>
 import Vue from "vue";
 import VueCookies from "vue-cookies";
+import store from '../store/store.js'
 Vue.use(require("vue-cookies"));
 Vue.use(VueCookies);
 
@@ -72,6 +73,7 @@ export default {
       pseudo: "",
       mail: "",
       data: [],
+      store: store,
     };
   },
   methods: {

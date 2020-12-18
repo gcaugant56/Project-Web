@@ -6,9 +6,13 @@ import Signup from '../components/Signup'
 import Signin from '../components/Signin'
 import Account from '../components/Account'
 import Planif from '../components/Planif'
+import Vote from '../components/Vote'
+
+
 Vue.use(Router)
 
 export default new Router({
+
   routes: [
     {
       path: '/',
@@ -34,6 +38,11 @@ export default new Router({
       path: '/plannif',
       name: 'Planif',
       component: Planif
+    },
+    {
+      path: '/vote',
+      name: 'Vote',
+      component: Vote
     }
       
   ]
