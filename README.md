@@ -16,7 +16,7 @@ Sur l'IDE IntelliJ Idea :
 
 - Executer Backend avec spring-boot:run
 
-### III.  Execution du projet - Côté Frontend
+### **III. Execution du projet - Côté Frontend**
 
 Sur l'IDE IntelliJ Idea ou Visual Studio Code : 
 
@@ -26,22 +26,22 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 
 - Toujours dans le terminal, taper : "npm run dev"
 
-### Présentation de l'interface du site web
+### **IV. Présentation de l'interface du site web**
 
-Page de connexion
+##### **Page de connexion**
 ![github-small](images/Login_Signup_Page.png)
 
-Homepage
+##### **Homepage**
 ![github-small](images/Homepage.png)
 
-### Fonctionnalités disponibles
+### V. **Fonctionnalités disponibles**
 
-Plannification d'événements :
-Les participants ajoutés à l'événements ci-dessous verront l'événement sur leur Homepage une fois connecté à leur compte
+##### **Plannification d'événements** :
+Les participants ajoutés à l'événement ci-dessous verront l'événement sur leur Homepage une fois connecté à leur compte.
 ![github-small](images/Plannification.png)
 
-### Schéma de la base de données
+### VI. **Schéma de la base de données**
 
-### Stack technique
+### VII. **Stack technique**
 
 ![github-small](images/Stack.png)
