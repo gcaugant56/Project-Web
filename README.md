@@ -28,4 +28,4 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 
 ### Stack technique
 
-![github-small]https://github.com/gcaugant56/Project-Web/blob/Back/readme/projet/stack.png?raw=true
+![github-small](images/stack.png)
