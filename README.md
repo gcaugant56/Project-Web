@@ -28,7 +28,7 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 
 ## **IV Vidéo de présentation du site**
 
-(clic on image)
+(cliquer sur l'image)
 <a href="https://www.youtube.com/watch?v=9NvWDNUx6T8&feature=youtu.be"><img src="Front/assets/img/youtube.png"></a>
 
 ## **V. Présentation de l'interface du site web**
@@ -39,13 +39,11 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 #### **2. Homepage**
 ![github-small](images/Homepage.png)
 
-## V. **Fonctionnalités disponibles**
+## **VI.Fonctionnalités disponibles**
 
 #### **Plannification d'événements** :
 Les participants ajoutés à l'événement ci-dessous verront l'événement sur leur Homepage une fois connecté à leur compte.
 ![github-small](images/Plannification.png)
 
-
 ## VII. **Stack technique**
-
 ![github-small](images/Stack.png)
