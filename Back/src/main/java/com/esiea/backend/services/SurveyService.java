@@ -38,6 +38,7 @@ public class SurveyService {
            String[] dates = getDate.getVoterChoice().split(",");
             for (String date:dates) {
                 if (date.equals(survey.getVoterChoice())){
+                    System.out.println("false");
                     return false;
                 }
             }
@@ -48,6 +49,7 @@ public class SurveyService {
             surveyRepository.save(newSurvey);
             return true;
         }
+        System.out.println("false");
         return false;
     }
 
@@ -60,10 +62,7 @@ public class SurveyService {
         List<Vote> votes = new ArrayList<>();
         for (String date:dates)
         {
-            System.out.println(id);
-            System.out.println(date);
-            System.out.println(surveyRepository.findAllByVoterEventIdContainingAndVoterChoiceContaining(id,date));
-            int count = surveyRepository.findAllByVoterEventIdContainingAndVoterChoiceContaining(id,date).size();
+            int count = surveyRepository.findAllByVoterEventIdEqualsAndVoterChoiceEquals(id,date).size();
             if(count > 0)
             {
                 String strcount = String.valueOf(count);

@@ -21,7 +21,8 @@ public class SurveyController {
     @PostMapping("/survey/create")
     public boolean createSurvey(@RequestBody Survey survey, @RequestHeader Map<String,String> headers){
         String token = headers.get("authorization");
-        System.out.println(token);
+        System.out.println(survey);
+
         return surveyService.createSurvey(survey,token);
     }
 
