@@ -43,7 +43,7 @@
               $prompt(
                 'Entrez votre nouvelle adresse mail : ',
                 '',
-                'Changement d'adresse mail',
+                'changment de mail',
                 'question'
               ).then((text) => {
                 changeMail(text);

@@ -1,0 +1,10 @@
+diff a/Front/src/components/Account.vue b/Front/src/components/Account.vue	(rejected hunks)
+@@ -43,7 +43,7 @@
+               $prompt(
+                 'Entrez votre nouvelle adresse mail : ',
+                 '',
+-                'changment de mail',
++                'Changement de d'adresse mail',
+                 'question'
+               ).then((text) => {
+                 changeMail(text);
