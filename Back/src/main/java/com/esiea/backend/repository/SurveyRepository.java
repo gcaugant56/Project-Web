@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SurveyRepository extends JpaRepository<Survey, Integer> {
     Survey getSurveyByVoterChoiceAndVoterEventIdAndVoterName(String date, String id, String name);
-    List<Survey> findAllByVoterEventIdContainingAndVoterChoiceContaining(String id, String date);
+    List<Survey> findAllByVoterEventIdEqualsAndVoterChoiceContaining(String id, String date);
 }
