@@ -45,5 +45,11 @@ Sur l'IDE IntelliJ Idea ou Visual Studio Code :
 Les participants ajoutés à l'événement ci-dessous verront l'événement sur leur Homepage une fois connecté à leur compte.
 ![github-small](images/Plannification.png)
 
+#### **Changement de mot de passe** :
+![github-small](images/ChangePassword.png)
+
+#### **Changement d'adresse mail** :
+![github-small](images/ChangeMail.png)
+
 ## **VII. Stack technique**
 ![github-small](images/Stack.png)
